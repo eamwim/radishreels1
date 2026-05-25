@@ -505,6 +505,69 @@
         }
 
         /* =========================================================
+           8b. RECEIPTS (stats)
+           ========================================================= */
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1px;
+            background: var(--border);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
+        }
+        @media (max-width: 1000px) { .stats-row { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 560px)  { .stats-row { grid-template-columns: 1fr; } }
+
+        .stat {
+            --accent: var(--radish);
+            background: var(--surface);
+            padding: 36px 28px 28px;
+            display: flex; flex-direction: column;
+            gap: 16px;
+            min-height: 280px;
+            transition: background 0.3s ease;
+        }
+        .stat:hover { background: var(--surface-2); }
+        .stat-num {
+            font-family: var(--serif);
+            font-weight: 800; font-style: italic;
+            font-size: clamp(64px, 7vw, 104px);
+            line-height: 1; letter-spacing: -0.04em;
+            color: var(--accent);
+            display: flex; align-items: baseline;
+        }
+        .stat-num .prefix {
+            font-size: 0.55em;
+            font-style: normal; font-weight: 400;
+            color: var(--text-soft);
+            margin-right: 6px;
+            letter-spacing: -0.02em;
+        }
+        .stat-num .unit {
+            font-size: 0.42em;
+            font-style: italic; font-weight: 400;
+            color: var(--text-soft);
+            margin-left: 6px;
+            letter-spacing: 0;
+        }
+        .stat-text {
+            flex: 1;
+            font-size: 15px;
+            line-height: 1.5;
+            color: var(--text);
+            max-width: 32ch;
+        }
+        .stat-source {
+            font-family: var(--mono);
+            font-size: 11px; font-style: italic;
+            color: var(--text-soft);
+            padding-top: 14px;
+            border-top: 1px solid var(--border);
+            letter-spacing: 0.02em;
+        }
+
+        /* =========================================================
            9. CTA
            ========================================================= */
         .cta-wrap {
@@ -737,11 +800,67 @@
         </div>
     </section>
 
+    <!-- =========================== RECEIPTS (stats) =========================== -->
+    <section class="block" id="receipts">
+        <div class="sec-head reveal">
+            <div>
+                <div class="sec-num">01 / Receipts</div>
+                <h2 class="sec-title">Bring the <em>receipts.</em></h2>
+            </div>
+            <p class="sec-sub">
+                A few honest numbers about why short-form content moves the needle for local shops —
+                from folks who studied it so we don't have to.
+            </p>
+        </div>
+
+        <div class="stats-row reveal">
+            <article class="stat" style="--accent: var(--radish);">
+                <div class="stat-num">
+                    <span data-count="40">0</span><span class="unit">%</span>
+                </div>
+                <p class="stat-text">
+                    of Gen Z look on TikTok or Instagram first when picking where to eat — instead of Google or Maps.
+                </p>
+                <span class="stat-source">— Google, 2022</span>
+            </article>
+
+            <article class="stat" style="--accent: var(--leaf);">
+                <div class="stat-num">
+                    <span data-count="89">0</span><span class="unit">%</span>
+                </div>
+                <p class="stat-text">
+                    of people say a video has convinced them to buy a product or service they were on the fence about.
+                </p>
+                <span class="stat-source">— Wyzowl, State of Video Marketing 2024</span>
+            </article>
+
+            <article class="stat" style="--accent: var(--mustard);">
+                <div class="stat-num">
+                    <span data-count="17">0</span><span class="unit">hrs</span>
+                </div>
+                <p class="stat-text">
+                    the average person spends watching online video — every single week.
+                </p>
+                <span class="stat-source">— Wyzowl, State of Video Marketing 2024</span>
+            </article>
+
+            <article class="stat" style="--accent: var(--radish);">
+                <div class="stat-num">
+                    <span class="prefix">#</span><span data-count="1">0</span>
+                </div>
+                <p class="stat-text">
+                    format marketers say delivers the best ROI, three years running: short-form video.
+                </p>
+                <span class="stat-source">— HubSpot, State of Marketing 2024</span>
+            </article>
+        </div>
+    </section>
+
     <!-- =========================== FOUNDERS =========================== -->
     <section class="block" id="founders">
         <div class="sec-head reveal">
             <div>
-                <div class="sec-num">01 / Founders</div>
+                <div class="sec-num">02 / Founders</div>
                 <h2 class="sec-title">The <em>crew.</em></h2>
             </div>
             <p class="sec-sub">
@@ -792,7 +911,7 @@
     <section class="block" id="contact" style="padding-top: 0;">
         <div class="cta-wrap reveal">
             <div class="cta-inner">
-                <div class="sec-num" style="margin-bottom: 18px;">02 / Say hi</div>
+                <div class="sec-num" style="margin-bottom: 18px;">03 / Say hi</div>
                 <h2 class="cta-title">Let's get <em>cooking.</em></h2>
                 <p class="cta-sub">
                     Drop your email and we'll get back to you with a short questionnaire and a time to chat. No decks, no pressure.
@@ -851,6 +970,32 @@
                 });
             }, { threshold: 0.12 });
             document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+        })();
+
+        // ---- Stats count-up animation
+        (function () {
+            const els = document.querySelectorAll('[data-count]');
+            if (!els.length) return;
+            const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+            const io = new IntersectionObserver((entries) => {
+                entries.forEach(e => {
+                    if (!e.isIntersecting) return;
+                    const el = e.target;
+                    const target = parseFloat(el.dataset.count);
+                    if (reduce) { el.textContent = target; io.unobserve(el); return; }
+                    const start = performance.now();
+                    const dur = 1500;
+                    function step(now) {
+                        const p = Math.min(1, (now - start) / dur);
+                        const eased = 1 - Math.pow(1 - p, 3);
+                        el.textContent = Math.round(target * eased);
+                        if (p < 1) requestAnimationFrame(step);
+                    }
+                    requestAnimationFrame(step);
+                    io.unobserve(el);
+                });
+            }, { threshold: 0.45 });
+            els.forEach(el => io.observe(el));
         })();
     </script>
 </body>
