@@ -3,22 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Radish Reels — short-form content studio for local heroes. Based in Tucson, AZ.">
-    <meta name="theme-color" content="#0E0B08" media="(prefers-color-scheme: dark)">
-    <meta name="theme-color" content="#F4EFE6" media="(prefers-color-scheme: light)">
-    <title>Radish Reels — short-form content for local heroes</title>
+    <meta name="description" content="Blueberry Hub LLC — a Tucson-based short-form content studio crafting reels, shorts, and social content for local businesses.">
+    <meta name="theme-color" content="#FBF7FF" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#0B0A18" media="(prefers-color-scheme: dark)">
+    <title>Blueberry Hub — short-form content studio in Tucson, AZ</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,800;1,9..144,400;1,9..144,800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Inter:wght@400;450;500;600&display=swap" rel="stylesheet">
 
-    <!-- Theme init: runs before paint to avoid flash -->
+    <!-- Theme init before paint (light default, dark opt-in) -->
     <script>
         (function () {
             try {
-                var stored = localStorage.getItem('rr-theme');
-                if (stored === 'light') {
-                    document.documentElement.setAttribute('data-theme', 'light');
+                if (localStorage.getItem('bh-theme') === 'dark') {
+                    document.documentElement.setAttribute('data-theme', 'dark');
                 }
             } catch (e) {}
         })();
@@ -26,61 +25,70 @@
 
     <style>
         /* =========================================================
-           1. TOKENS — dark by default, light via [data-theme="light"]
+           1. TOKENS
            ========================================================= */
         :root {
-            --bg:         #0E0B08;
-            --bg-2:       #14100C;
-            --surface:    #1C1712;
-            --surface-2:  #241E18;
-            --text:       #F4EFE6;
-            --text-soft:  #A39A8E;
-            --border:     rgba(244, 239, 230, 0.10);
-            --border-2:   rgba(244, 239, 230, 0.18);
+            --bg:         #FBF7FF;
+            --bg-tint:    #F1EAFF;
+            --surface:    #FFFFFF;
+            --surface-2:  #F5EFFF;
+            --text:       #241B4A;
+            --text-soft:  #6B5F97;
+            --text-faint: #A99FCB;
+            --border:     #E4DAFB;
+            --border-ink: #241B4A;
 
-            --radish:      #FF5C8A;
-            --radish-dark: #C42456;
-            --leaf:        #4FC470;
-            --leaf-dark:   #2E7D40;
-            --mustard:     #FFCB4D;
-            --berry:       #8B5CFF;
+            --blueberry:   #6C4BE6;
+            --blueberry-2: #8F72FF;
+            --blueberry-d: #4A2FC0;
+            --plum:        #B85CE6;
+            --sky:         #5B8DFF;
+            --pink:        #FF8FC7;
+            --lemon:       #FFD34E;
+            --frost:       #EDE6FF;
 
-            --phone-frame: #2A2520;
-            --grain-blend: overlay;
-            --grain-op:    0.06;
+            --ring: 0 0 0 3px rgba(108, 75, 230, 0.18);
+            --pop-sm: 4px 4px 0 var(--border-ink);
+            --pop-md: 7px 7px 0 var(--border-ink);
+            --soft-md: 0 22px 44px -22px rgba(74, 47, 192, 0.45);
 
-            --serif: 'Fraunces', 'Times New Roman', serif;
-            --sans:  'Inter', system-ui, -apple-system, sans-serif;
-            --mono:  'JetBrains Mono', ui-monospace, monospace;
+            --display: 'Fredoka', system-ui, sans-serif;
+            --body:    'Inter', system-ui, -apple-system, sans-serif;
 
-            --max: 1280px;
-            --gutter: clamp(20px, 4vw, 56px);
-            --radius: 18px;
+            --bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
 
-            color-scheme: dark;
-        }
-        :root[data-theme="light"] {
-            --bg:         #F4EFE6;
-            --bg-2:       #ECE5D6;
-            --surface:    #ECE5D6;
-            --surface-2:  #E2D9C5;
-            --text:       #16110D;
-            --text-soft:  #5A4E40;
-            --border:     rgba(22, 17, 13, 0.10);
-            --border-2:   rgba(22, 17, 13, 0.18);
-
-            --radish:      #E63B6E;
-            --radish-dark: #B82253;
-            --leaf:        #3FA957;
-            --leaf-dark:   #2E7D40;
-            --mustard:     #E6A82B;
-            --berry:       #6E2BFF;
-
-            --phone-frame: #16110D;
-            --grain-blend: multiply;
-            --grain-op:    0.08;
+            --max: 1200px;
+            --gutter: clamp(22px, 5vw, 80px);
+            --radius: 30px;
+            --radius-sm: 20px;
 
             color-scheme: light;
+        }
+        :root[data-theme="dark"] {
+            --bg:         #0B0A18;
+            --bg-tint:    #15122E;
+            --surface:    #17142F;
+            --surface-2:  #1F1B3D;
+            --text:       #F4F0FF;
+            --text-soft:  #B4ACDB;
+            --text-faint: #726BA0;
+            --border:     #322C58;
+            --border-ink: #0B0A18;
+
+            --blueberry:   #9A80FF;
+            --blueberry-2: #B6A2FF;
+            --blueberry-d: #7A5DF0;
+            --plum:        #D28BFF;
+            --sky:         #7CA1FF;
+            --pink:        #FF9FD1;
+            --lemon:       #FFDD70;
+            --frost:       #241F47;
+
+            --pop-sm: 4px 4px 0 rgba(0,0,0,0.55);
+            --pop-md: 7px 7px 0 rgba(0,0,0,0.55);
+            --soft-md: 0 22px 44px -22px rgba(0, 0, 0, 0.8);
+
+            color-scheme: dark;
         }
 
         /* =========================================================
@@ -89,10 +97,10 @@
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
         body {
-            font-family: var(--sans);
+            font-family: var(--body);
             background: var(--bg);
             color: var(--text);
-            line-height: 1.55;
+            line-height: 1.6;
             font-size: 17px;
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
@@ -101,879 +109,672 @@
         img, svg { display: block; max-width: 100%; }
         a { color: inherit; text-decoration: none; }
         button { font: inherit; cursor: pointer; border: none; background: none; color: inherit; }
-        ::selection { background: var(--radish); color: var(--bg); }
+        ::selection { background: var(--blueberry); color: #fff; }
 
         /* =========================================================
-           3. GRAIN OVERLAY
+           3. BACKGROUND — blobs + rising bubbles
            ========================================================= */
-        .grain {
-            position: fixed; inset: 0; pointer-events: none; z-index: 9998;
-            opacity: var(--grain-op); mix-blend-mode: var(--grain-blend);
-            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.8 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+        .ambient { position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; }
+        .blob { position: absolute; border-radius: 999px; filter: blur(90px); opacity: 0.45; }
+        .blob.b1 { width: 620px; height: 620px; top: -240px; right: -160px; background: radial-gradient(circle, var(--blueberry-2), transparent 68%); }
+        .blob.b2 { width: 520px; height: 520px; top: 45%; left: -220px; background: radial-gradient(circle, var(--plum), transparent 68%); opacity: 0.3; }
+        :root[data-theme="dark"] .blob { opacity: 0.32; }
+
+        .bubbles { position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; }
+        .bubbles i {
+            position: absolute; bottom: -80px; border-radius: 999px;
+            background: radial-gradient(circle at 32% 30%, rgba(255,255,255,0.9), var(--blueberry-2) 60%, var(--blueberry-d));
+            opacity: 0.16;
+            animation: floatUp linear infinite;
+        }
+        :root[data-theme="dark"] .bubbles i { opacity: 0.12; }
+        @keyframes floatUp {
+            0%   { transform: translateY(0) scale(0.7); opacity: 0; }
+            10%  { opacity: 0.18; }
+            90%  { opacity: 0.14; }
+            100% { transform: translateY(-112vh) scale(1.05); opacity: 0; }
         }
 
         /* =========================================================
-           4. NAV
+           4. HELPERS
            ========================================================= */
-        .nav {
-            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-            padding: 18px var(--gutter);
-            display: flex; align-items: center; justify-content: space-between;
-            gap: 24px;
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
-            background: color-mix(in srgb, var(--bg) 78%, transparent);
-            border-bottom: 1px solid var(--border);
-        }
-        .brand {
-            display: flex; align-items: center; gap: 10px;
-            font-family: var(--serif); font-weight: 800; font-size: 22px;
-            letter-spacing: -0.02em;
-        }
-        .brand-mark {
-            width: 24px; height: 30px; flex-shrink: 0;
-            transform-origin: 50% 90%;
-            animation: wiggle 5s ease-in-out infinite;
-        }
-        @keyframes wiggle {
-            0%, 92%, 100% { transform: rotate(0); }
-            94%            { transform: rotate(-10deg); }
-            96%            { transform: rotate(8deg); }
-            98%            { transform: rotate(-4deg); }
-        }
-
-        .nav-right {
-            display: flex; align-items: center; gap: 18px;
-        }
-
-        /* Live location pill — sits in the middle of the nav, always visible */
-        .location-pill {
-            display: inline-flex; align-items: center; gap: 9px;
-            padding: 7px 14px 7px 11px;
-            border: 1px solid var(--border-2);
-            border-radius: 999px;
-            background: color-mix(in srgb, var(--surface) 60%, transparent);
-            font-family: var(--mono);
-            font-size: 11px;
-            letter-spacing: 0.14em;
-            text-transform: uppercase;
-            color: var(--text);
-            white-space: nowrap;
-        }
-        .location-pill .pin {
-            width: 7px; height: 7px; border-radius: 999px;
-            background: var(--radish);
-            box-shadow: 0 0 0 4px color-mix(in srgb, var(--radish) 30%, transparent);
-            animation: pulse-loc 2.4s ease-in-out infinite;
-        }
-        @keyframes pulse-loc {
-            0%, 100% { box-shadow: 0 0 0 4px color-mix(in srgb, var(--radish) 30%, transparent); }
-            50%       { box-shadow: 0 0 0 10px color-mix(in srgb, var(--radish) 0%,  transparent); }
-        }
-        .location-pill .sep { opacity: 0.4; }
-        @media (max-width: 520px) { .location-pill .sep, .location-pill .coord { display: none; } }
-        .nav-links {
-            display: flex; gap: 4px; font-size: 14px; font-weight: 500;
-        }
-        .nav-links a {
-            padding: 8px 14px; border-radius: 999px;
-            transition: background 0.2s, color 0.2s;
-        }
-        .nav-links a:hover { background: var(--text); color: var(--bg); }
-        @media (max-width: 640px) { .nav-links { display: none; } }
-
-        .theme-toggle {
-            width: 38px; height: 38px;
-            display: grid; place-items: center;
-            border-radius: 999px;
-            border: 1px solid var(--border-2);
-            transition: background 0.2s, border-color 0.2s, transform 0.3s;
-        }
-        .theme-toggle:hover { background: var(--surface-2); transform: rotate(15deg); }
-        .theme-toggle svg { width: 18px; height: 18px; transition: opacity 0.3s; }
-        .theme-toggle .icon-moon { display: none; }
-        :root[data-theme="light"] .theme-toggle .icon-sun  { display: none; }
-        :root[data-theme="light"] .theme-toggle .icon-moon { display: block; }
-
-        /* =========================================================
-           5. HERO
-           ========================================================= */
-        .hero {
-            position: relative;
-            padding: 140px var(--gutter) 80px;
-            display: grid; gap: 60px;
-            grid-template-columns: 1.35fr 1fr;
-            align-items: end;
-            max-width: var(--max); margin: 0 auto;
-        }
-        @media (max-width: 960px) { .hero { grid-template-columns: 1fr; padding-top: 120px; gap: 50px; } }
-
+        .wrap { max-width: var(--max); margin: 0 auto; padding-left: var(--gutter); padding-right: var(--gutter); }
         .eyebrow {
-            display: inline-flex; align-items: center; gap: 10px;
-            font-family: var(--mono); font-size: 12px;
-            text-transform: uppercase; letter-spacing: 0.14em;
-            color: var(--text-soft);
-            margin-bottom: 28px;
-        }
-        .eyebrow::before {
-            content: ""; width: 28px; height: 1px; background: var(--text-soft);
+            display: inline-flex; align-items: center; gap: 8px;
+            font-family: var(--display); font-size: 13px; font-weight: 600;
+            text-transform: uppercase; letter-spacing: 0.12em;
+            color: var(--blueberry-d);
+            background: var(--frost);
+            padding: 8px 16px; border-radius: 999px;
         }
 
-        h1.display {
-            font-family: var(--serif); font-weight: 800;
-            font-size: clamp(54px, 8.6vw, 140px);
-            line-height: 0.94; letter-spacing: -0.035em;
-            color: var(--text);
-        }
-        h1.display .stop { color: var(--radish); }
-        h1.display em {
-            font-style: italic; font-weight: 800;
-            position: relative; white-space: nowrap;
-        }
-        h1.display em::after {
-            content: ""; position: absolute; left: 0; right: 0; bottom: 0.07em; height: 0.16em;
-            background: var(--mustard); z-index: -1;
-            transform: skewX(-12deg);
-            opacity: 0.85;
-        }
-        .reveal-word {
-            display: inline-block;
-            transform: translateY(110%);
-            opacity: 0;
-            animation: rise 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
-        }
-        @keyframes rise { to { transform: translateY(0); opacity: 1; } }
-
-        .hero p.lede {
-            margin-top: 32px; max-width: 540px;
-            font-size: clamp(17px, 1.4vw, 19px);
-            color: var(--text-soft);
-        }
-        .hl-tucson {
-            display: inline-block;
-            position: relative;
-            color: var(--text);
-            font-weight: 600;
-            padding: 0 4px;
-            white-space: nowrap;
-        }
-        .hl-tucson::before {
-            content: ""; position: absolute;
-            left: 0; right: 0; bottom: 0;
-            height: 38%;
-            background: var(--mustard);
-            opacity: 0.85;
-            z-index: -1;
-            transform: skewX(-10deg);
-            border-radius: 2px;
-        }
-
-        .hero-cta { margin-top: 36px; display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
         .btn {
             display: inline-flex; align-items: center; gap: 10px;
-            padding: 14px 24px; border-radius: 999px;
-            font-weight: 600; font-size: 15px;
-            transition: transform 0.2s ease, background 0.2s, color 0.2s, border-color 0.2s;
+            padding: 15px 28px; border-radius: 999px;
+            font-family: var(--display); font-weight: 600; font-size: 16px;
+            transition: transform 0.25s var(--bounce), background 0.25s, color 0.25s, box-shadow 0.25s, border-color 0.25s;
         }
-        .btn-primary { background: var(--radish); color: #fff; }
-        .btn-primary:hover { background: var(--radish-dark); transform: translateY(-2px); }
+        .btn-primary { background: var(--blueberry); color: #fff; border: 2.5px solid var(--border-ink); box-shadow: var(--pop-sm); }
+        .btn-primary:hover { transform: translate(-2px, -3px) rotate(-1deg); box-shadow: var(--pop-md); background: var(--blueberry-d); }
+        .btn-primary:active { transform: translate(2px, 2px); box-shadow: 2px 2px 0 var(--border-ink); }
         .btn-primary .arr { transition: transform 0.2s; }
         .btn-primary:hover .arr { transform: translate(3px, -3px); }
-        .btn-ghost { border: 1px solid var(--border-2); color: var(--text); }
-        .btn-ghost:hover { background: var(--surface-2); }
+        .btn-ghost { background: var(--surface); border: 2.5px solid var(--border-ink); color: var(--text); box-shadow: var(--pop-sm); }
+        .btn-ghost:hover { transform: translate(-2px, -3px) rotate(1deg); box-shadow: var(--pop-md); color: var(--blueberry); }
+        .btn-ghost:active { transform: translate(2px, 2px); box-shadow: 2px 2px 0 var(--border-ink); }
 
-        /* PHONE MOCKUP */
-        .phone-wrap {
-            justify-self: end;
-            position: relative;
-            transform: rotate(3deg);
-        }
-        @media (max-width: 960px) { .phone-wrap { justify-self: center; transform: rotate(0); } }
-
-        /* Floating "Tucson, AZ" sticker on the phone */
-        .phone-sticker {
-            position: absolute;
-            top: -22px; left: -34px;
-            z-index: 4;
-            display: inline-flex; align-items: center; gap: 8px;
-            background: var(--mustard);
-            color: #16110D;
-            padding: 10px 16px;
+        /* =========================================================
+           5. NAV
+           ========================================================= */
+        .nav {
+            position: fixed; top: 14px; left: 50%; transform: translateX(-50%); z-index: 100;
+            width: calc(100% - 28px); max-width: var(--max);
+            display: flex; align-items: center; justify-content: space-between; gap: 20px;
+            padding: 12px 12px 12px 22px;
             border-radius: 999px;
-            font-family: var(--mono);
-            font-size: 12px; font-weight: 600;
-            letter-spacing: 0.14em;
-            text-transform: uppercase;
-            transform: rotate(-8deg);
-            box-shadow: 0 10px 26px rgba(0, 0, 0, 0.35);
-            animation: stickerFloat 5s ease-in-out infinite;
+            border: 2.5px solid var(--border-ink);
+            background: color-mix(in srgb, var(--surface) 88%, transparent);
+            backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+            box-shadow: var(--pop-sm);
         }
-        .phone-sticker svg { width: 14px; height: 14px; }
-        @keyframes stickerFloat {
-            0%, 100% { transform: rotate(-8deg) translateY(0); }
-            50%       { transform: rotate(-6deg) translateY(-5px); }
-        }
-        @media (max-width: 540px) { .phone-sticker { left: -10px; top: -16px; font-size: 10px; padding: 8px 12px; } }
+        .brand { display: flex; align-items: center; gap: 10px; font-family: var(--display); font-weight: 700; font-size: 20px; letter-spacing: -0.01em; }
+        .brand-mark { width: 34px; height: 34px; flex-shrink: 0; }
+        .brand-mark.spin:hover { animation: spin360 0.7s var(--bounce); }
+        @keyframes spin360 { to { transform: rotate(360deg); } }
+        .brand .llc { font-size: 10px; font-weight: 600; color: var(--text-faint); letter-spacing: 0.14em; align-self: flex-start; margin-top: 3px; }
 
-        .phone {
-            width: 280px; height: 560px;
-            background: var(--phone-frame);
-            border-radius: 44px;
-            padding: 11px;
-            box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.5),
-                        inset 0 0 0 1px var(--border-2);
-            position: relative;
+        .nav-links { display: flex; gap: 2px; }
+        .nav-links a { padding: 9px 15px; border-radius: 999px; font-family: var(--display); font-size: 15px; font-weight: 500; color: var(--text-soft); transition: background 0.2s, color 0.2s, transform 0.2s var(--bounce); }
+        .nav-links a:hover { background: var(--frost); color: var(--blueberry-d); transform: translateY(-2px); }
+        @media (max-width: 800px) { .nav-links { display: none; } }
+
+        .nav-right { display: flex; align-items: center; gap: 10px; }
+        .theme-toggle {
+            width: 42px; height: 42px; display: grid; place-items: center;
+            border-radius: 999px; border: 2.5px solid var(--border-ink); background: var(--surface);
+            transition: transform 0.3s var(--bounce), background 0.2s;
         }
-        .phone::before {
-            content: ""; position: absolute; top: 16px; left: 50%; transform: translateX(-50%);
-            width: 78px; height: 22px; background: #000; border-radius: 999px;
-            z-index: 3;
-        }
-        .screen {
-            position: relative; width: 100%; height: 100%;
-            border-radius: 34px; overflow: hidden;
-            background: #000;
-        }
-        .reel-stack {
-            position: absolute; inset: 0;
-            display: flex; flex-direction: column;
-            animation: reelScroll 18s infinite;
-        }
-        @keyframes reelScroll {
-            0%, 18%   { transform: translateY(0); }
-            20%, 38%  { transform: translateY(-100%); }
-            40%, 58%  { transform: translateY(-200%); }
-            60%, 78%  { transform: translateY(-300%); }
-            80%, 98%  { transform: translateY(-400%); }
-            100%      { transform: translateY(-500%); }
-        }
-        .reel {
-            flex: 0 0 100%;
-            position: relative;
-            padding: 60px 22px 26px;
-            display: flex; flex-direction: column; justify-content: space-between;
-            color: #fff;
-            overflow: hidden;
-        }
-        .reel-1 { background: linear-gradient(160deg, #FF5C8A 0%, #6A1632 90%); }
-        .reel-2 { background: linear-gradient(160deg, #2C5530 0%, #0B1F12 90%); }
-        .reel-3 { background: linear-gradient(160deg, #FFB84D 0%, #6E3300 90%); }
-        .reel-4 { background: linear-gradient(160deg, #66BFFF 0%, #1A2E63 90%); }
-        .reel-5 { background: linear-gradient(160deg, #F4B5C0 0%, #6E1A33 90%); }
-        .reel::before {
-            content: ""; position: absolute; inset: 0;
-            background:
-                radial-gradient(60% 40% at 30% 25%, rgba(255,255,255,0.16), transparent),
-                radial-gradient(40% 30% at 70% 75%, rgba(0,0,0,0.30), transparent);
-        }
-        .reel-num {
-            position: relative; z-index: 2;
-            font-family: var(--mono); font-size: 11px;
-            text-transform: uppercase; letter-spacing: 0.16em;
-            opacity: 0.85;
-        }
-        .reel-title {
-            position: relative; z-index: 2;
-            font-family: var(--serif); font-weight: 800;
-            font-size: 38px; line-height: 0.95; letter-spacing: -0.025em;
-        }
-        .reel-title em { font-style: italic; }
-        .reel-foot {
-            position: relative; z-index: 2;
-            font-family: var(--mono); font-size: 10px;
-            text-transform: uppercase; letter-spacing: 0.16em;
-            opacity: 0.85;
-        }
+        .theme-toggle:hover { background: var(--frost); transform: rotate(20deg) scale(1.05); }
+        .theme-toggle svg { width: 18px; height: 18px; }
+        .theme-toggle .icon-moon { display: none; }
+        :root[data-theme="dark"] .theme-toggle .icon-sun { display: none; }
+        :root[data-theme="dark"] .theme-toggle .icon-moon { display: block; }
+        .nav .btn { padding: 12px 22px; }
+        @media (max-width: 560px) { .nav .nav-cta { display: none; } }
 
         /* =========================================================
-           6. TICKER
+           6. HERO
            ========================================================= */
-        .ticker {
-            background: var(--text); color: var(--bg);
-            overflow: hidden; padding: 16px 0;
-            border-top: 1px solid var(--text);
-            border-bottom: 1px solid var(--text);
+        .hero { padding: 168px 0 90px; text-align: center; position: relative; }
+        .hero .pill {
+            display: inline-flex; align-items: center; gap: 9px;
+            padding: 9px 18px; border-radius: 999px;
+            background: var(--surface); border: 2.5px solid var(--border-ink);
+            box-shadow: var(--pop-sm);
+            font-family: var(--display); font-size: 13px; font-weight: 500;
+            color: var(--text); margin-bottom: 28px;
         }
-        .ticker-track {
-            display: flex; gap: 48px; width: max-content;
-            animation: scrollLeft 34s linear infinite;
-            font-family: var(--serif); font-weight: 800; font-style: italic;
-            font-size: clamp(22px, 3vw, 36px); letter-spacing: -0.02em;
-            white-space: nowrap;
+        .hero .pill .loc-dot { width: 8px; height: 8px; border-radius: 999px; background: var(--blueberry); animation: blip 1.6s ease-in-out infinite; }
+        @keyframes blip { 0%,100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.5); opacity: 0.5; } }
+
+        h1.hero-title {
+            font-family: var(--display); font-weight: 700;
+            font-size: clamp(42px, 7.4vw, 92px);
+            line-height: 1.03; letter-spacing: -0.02em;
+            max-width: 16ch; margin: 0 auto;
         }
-        .ticker-track span { display: inline-flex; align-items: center; gap: 48px; }
-        .ticker-track .dot { color: var(--radish); }
-        .ticker-track .loc { color: var(--mustard); font-style: italic; }
-        .ticker:hover .ticker-track { animation-play-state: paused; }
-        @keyframes scrollLeft {
-            from { transform: translateX(0); }
-            to   { transform: translateX(-50%); }
+        h1.hero-title em {
+            font-style: normal; color: #fff; background: var(--blueberry);
+            padding: 0 0.22em; border-radius: 18px; display: inline-block;
+            border: 2.5px solid var(--border-ink); box-shadow: var(--pop-sm);
+            transform: rotate(-1.5deg);
+            animation: wobbleWord 5s ease-in-out infinite;
         }
+        @keyframes wobbleWord { 0%,100% { transform: rotate(-1.5deg); } 50% { transform: rotate(1.5deg); } }
+        .hero-sub { margin: 30px auto 0; max-width: 58ch; font-size: clamp(17px, 1.5vw, 20px); color: var(--text-soft); }
+        .hero-cta { margin-top: 38px; display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+        .hero-note { margin-top: 50px; font-family: var(--display); font-size: 13px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.14em; color: var(--text-faint); }
+
+        .rise { opacity: 0; transform: translateY(26px); animation: rise 0.85s var(--bounce) forwards; }
+        @keyframes rise { to { opacity: 1; transform: none; } }
 
         /* =========================================================
-           7. SECTION HEADERS
+           7. MARQUEE
            ========================================================= */
-        section.block {
-            padding: 110px var(--gutter);
-            max-width: var(--max); margin: 0 auto;
-        }
-        .sec-head {
-            display: flex; align-items: end; justify-content: space-between;
-            gap: 40px; margin-bottom: 56px;
-            border-bottom: 1px solid var(--border); padding-bottom: 28px;
-        }
-        @media (max-width: 720px) { .sec-head { flex-direction: column; align-items: flex-start; gap: 20px; } }
-        .sec-num {
-            font-family: var(--mono); font-size: 12px;
-            text-transform: uppercase; letter-spacing: 0.14em;
-            color: var(--text-soft);
-        }
-        .sec-title {
-            font-family: var(--serif); font-weight: 800;
-            font-size: clamp(40px, 6vw, 84px);
-            line-height: 0.96; letter-spacing: -0.035em;
-            margin-top: 8px;
-        }
-        .sec-title em { font-style: italic; color: var(--radish); }
-        .sec-sub {
-            max-width: 360px; color: var(--text-soft);
-            font-size: 16px;
-        }
+        .marquee { overflow: hidden; padding: 18px 0; border-top: 2.5px solid var(--border-ink); border-bottom: 2.5px solid var(--border-ink); background: var(--blueberry); color: #fff; }
+        .marquee-track { display: flex; gap: 40px; width: max-content; animation: scroll 30s linear infinite; }
+        .marquee-track span { display: inline-flex; align-items: center; gap: 40px; font-family: var(--display); font-weight: 600; font-size: 17px; text-transform: uppercase; letter-spacing: 0.1em; white-space: nowrap; }
+        .marquee-track .star { color: var(--lemon); }
+        .marquee:hover .marquee-track { animation-play-state: paused; }
+        @keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
         /* =========================================================
-           8. FOUNDERS
+           8. SECTION HEADS
            ========================================================= */
-        .founders {
-            display: grid; gap: 18px;
-            grid-template-columns: repeat(3, 1fr);
-        }
-        @media (max-width: 880px) { .founders { grid-template-columns: 1fr; } }
-
-        .founder {
-            position: relative;
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 32px 28px 28px;
-            min-height: 360px;
-            display: flex; flex-direction: column; justify-content: space-between;
-            overflow: hidden;
-            transition: transform 0.35s ease, border-color 0.3s ease, background 0.3s ease;
-        }
-        .founder:hover {
-            transform: translateY(-6px);
-            border-color: var(--border-2);
-            background: var(--surface-2);
-        }
-        .founder:hover .founder-glyph { transform: rotate(-8deg) scale(1.08); }
-
-        .founder-head {
-            display: flex; justify-content: space-between; align-items: flex-start;
-            font-family: var(--mono); font-size: 11px;
-            text-transform: uppercase; letter-spacing: 0.16em;
-            color: var(--text-soft);
-        }
-        .founder-glyph {
-            font-size: 64px; line-height: 1;
-            filter: drop-shadow(0 4px 14px rgba(0,0,0,0.3));
-            transition: transform 0.4s ease;
-            transform-origin: 70% 70%;
-        }
-        .founder-title {
-            font-family: var(--serif); font-weight: 800; font-style: italic;
-            font-size: clamp(48px, 5vw, 64px);
-            line-height: 0.94; letter-spacing: -0.035em;
-            margin-top: 36px;
-        }
-        .founder-title .accent { color: var(--radish); font-style: italic; }
-        .founder:nth-child(2) .founder-title .accent { color: var(--leaf); }
-        .founder:nth-child(3) .founder-title .accent { color: var(--mustard); }
-        .founder-meta {
-            margin-top: 28px;
-            padding-top: 20px;
-            border-top: 1px solid var(--border);
-            display: flex; flex-direction: column; gap: 4px;
-        }
-        .founder-name {
-            font-family: var(--sans); font-weight: 600; font-size: 16px;
-            letter-spacing: -0.01em;
-        }
-        .founder-role {
-            font-family: var(--mono); font-size: 11px;
-            text-transform: uppercase; letter-spacing: 0.16em;
-            color: var(--text-soft);
-        }
+        section.block { padding: clamp(72px, 10vw, 128px) 0; }
+        .sec-head { max-width: 760px; margin: 0 auto clamp(44px, 6vw, 66px); text-align: center; }
+        .sec-head h2 { font-family: var(--display); font-weight: 700; font-size: clamp(34px, 5vw, 60px); line-height: 1.05; letter-spacing: -0.02em; margin-top: 16px; }
+        .sec-head h2 em { font-style: normal; color: var(--blueberry); }
+        .sec-head p { margin-top: 16px; font-size: 18px; color: var(--text-soft); }
 
         /* =========================================================
-           8b. RECEIPTS (stats)
+           9. SERVICES
            ========================================================= */
-        .stats-row {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1px;
-            background: var(--border);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            overflow: hidden;
+        .services { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+        @media (max-width: 900px) { .services { grid-template-columns: 1fr 1fr; } }
+        @media (max-width: 620px) { .services { grid-template-columns: 1fr; } }
+        .service {
+            position: relative; background: var(--surface); border: 2.5px solid var(--border-ink);
+            border-radius: var(--radius); padding: 34px 30px; box-shadow: var(--pop-sm);
+            transition: transform 0.3s var(--bounce), box-shadow 0.3s;
         }
-        @media (max-width: 1000px) { .stats-row { grid-template-columns: repeat(2, 1fr); } }
-        @media (max-width: 560px)  { .stats-row { grid-template-columns: 1fr; } }
-
-        .stat {
-            --accent: var(--radish);
-            background: var(--surface);
-            padding: 36px 28px 28px;
-            display: flex; flex-direction: column;
-            gap: 16px;
-            min-height: 280px;
-            transition: background 0.3s ease;
-        }
-        .stat:hover { background: var(--surface-2); }
-        .stat-num {
-            font-family: var(--serif);
-            font-weight: 800; font-style: italic;
-            font-size: clamp(64px, 7vw, 104px);
-            line-height: 1; letter-spacing: -0.04em;
-            color: var(--accent);
-            display: flex; align-items: baseline;
-        }
-        .stat-num .prefix {
-            font-size: 0.55em;
-            font-style: normal; font-weight: 400;
-            color: var(--text-soft);
-            margin-right: 6px;
-            letter-spacing: -0.02em;
-        }
-        .stat-num .unit {
-            font-size: 0.42em;
-            font-style: italic; font-weight: 400;
-            color: var(--text-soft);
-            margin-left: 6px;
-            letter-spacing: 0;
-        }
-        .stat-text {
-            flex: 1;
-            font-size: 15px;
-            line-height: 1.5;
-            color: var(--text);
-            max-width: 32ch;
-        }
-        .stat-source {
-            font-family: var(--mono);
-            font-size: 11px; font-style: italic;
-            color: var(--text-soft);
-            padding-top: 14px;
-            border-top: 1px solid var(--border);
-            letter-spacing: 0.02em;
-        }
+        .service:nth-child(even) { transform: rotate(-0.6deg); }
+        .service:nth-child(odd) { transform: rotate(0.6deg); }
+        .service:hover { transform: translate(-3px, -5px) rotate(0deg); box-shadow: var(--pop-md); }
+        .service:hover .ico { animation: jiggle 0.5s ease; }
+        .service .ico { width: 58px; height: 58px; border-radius: 18px; display: grid; place-items: center; background: var(--frost); color: var(--blueberry); margin-bottom: 22px; border: 2.5px solid var(--border-ink); }
+        .service .ico svg { width: 28px; height: 28px; }
+        @keyframes jiggle { 0%,100%{transform:rotate(0);} 25%{transform:rotate(-10deg);} 75%{transform:rotate(10deg);} }
+        .service h3 { font-family: var(--display); font-weight: 600; font-size: 23px; }
+        .service p { margin-top: 10px; color: var(--text-soft); font-size: 15.5px; }
+        .service .num { position: absolute; top: 26px; right: 30px; font-family: var(--display); font-weight: 700; font-size: 24px; color: var(--text-faint); }
 
         /* =========================================================
-           9. CTA
+           10. STATS
            ========================================================= */
-        .cta-wrap {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: clamp(40px, 7vw, 90px);
-            position: relative;
-            overflow: hidden;
-        }
-        .cta-wrap::before {
-            content: ""; position: absolute;
-            width: 560px; height: 560px; border-radius: 999px;
-            background: radial-gradient(circle, color-mix(in srgb, var(--radish) 60%, transparent), transparent 65%);
-            top: -180px; right: -180px;
-            filter: blur(30px);
-            pointer-events: none;
-        }
-        .cta-wrap::after {
-            content: ""; position: absolute;
-            width: 400px; height: 400px; border-radius: 999px;
-            background: radial-gradient(circle, color-mix(in srgb, var(--mustard) 35%, transparent), transparent 65%);
-            bottom: -140px; left: -120px;
-            filter: blur(30px);
-            pointer-events: none;
-        }
+        .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+        @media (max-width: 900px) { .stats-grid { grid-template-columns: 1fr 1fr; } }
+        @media (max-width: 520px) { .stats-grid { grid-template-columns: 1fr; } }
+        .stat { background: var(--surface); border: 2.5px solid var(--border-ink); border-radius: var(--radius); padding: 30px 26px; box-shadow: var(--pop-sm); transition: transform 0.3s var(--bounce); }
+        .stat:hover { transform: translateY(-5px) rotate(-1deg); }
+        .stat:nth-child(1) { background: var(--frost); }
+        .stat-num { font-family: var(--display); font-weight: 700; font-size: clamp(46px, 5.5vw, 68px); line-height: 1; letter-spacing: -0.03em; color: var(--blueberry); display: flex; align-items: baseline; }
+        .stat:nth-child(2) .stat-num { color: var(--plum); }
+        .stat:nth-child(3) .stat-num { color: var(--sky); }
+        .stat:nth-child(4) .stat-num { color: var(--blueberry-d); }
+        .stat-num .pre { color: var(--text-faint); font-weight: 500; margin-right: 4px; }
+        .stat-num .unit { font-size: 0.5em; color: var(--text-faint); font-weight: 600; margin-left: 4px; }
+        .stat p { margin-top: 14px; font-size: 15px; color: var(--text); }
+        .stat .src { margin-top: 12px; font-family: var(--display); font-size: 11.5px; font-weight: 500; color: var(--text-faint); }
+
+        /* =========================================================
+           11. PROCESS
+           ========================================================= */
+        .process { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+        @media (max-width: 820px) { .process { grid-template-columns: 1fr; } }
+        .step { position: relative; background: var(--surface); border: 2.5px solid var(--border-ink); border-radius: var(--radius); padding: 32px 28px; box-shadow: var(--pop-sm); transition: transform 0.3s var(--bounce); }
+        .step:hover { transform: translateY(-5px); }
+        .step .badge { width: 54px; height: 54px; border-radius: 999px; display: grid; place-items: center; background: var(--blueberry); color: #fff; font-family: var(--display); font-weight: 700; font-size: 22px; border: 2.5px solid var(--border-ink); margin-bottom: 18px; }
+        .step:nth-child(2) .badge { background: var(--plum); }
+        .step:nth-child(3) .badge { background: var(--sky); }
+        .step h3 { font-family: var(--display); font-weight: 600; font-size: 23px; }
+        .step p { margin-top: 8px; color: var(--text-soft); font-size: 15.5px; }
+
+        /* =========================================================
+           12. FOUNDERS
+           ========================================================= */
+        .founders { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+        @media (max-width: 820px) { .founders { grid-template-columns: 1fr; } }
+        .founder { position: relative; background: var(--surface); border: 2.5px solid var(--border-ink); border-radius: var(--radius); padding: 32px 28px; box-shadow: var(--pop-sm); overflow: hidden; transition: transform 0.3s var(--bounce), box-shadow 0.3s; }
+        .founder:nth-child(1) { transform: rotate(-1deg); }
+        .founder:nth-child(3) { transform: rotate(1deg); }
+        .founder:hover { transform: translate(-3px, -5px) rotate(0deg); box-shadow: var(--pop-md); }
+        .founder:hover .founder-glyph { animation: bounceGlyph 0.6s var(--bounce); }
+        @keyframes bounceGlyph { 0%,100%{transform:translateY(0) rotate(0);} 40%{transform:translateY(-14px) rotate(-8deg);} }
+        .founder-top { display: flex; align-items: center; justify-content: space-between; }
+        .founder-glyph { font-size: 56px; line-height: 1; display: inline-block; }
+        .founder-idx { font-family: var(--display); font-size: 13px; font-weight: 600; letter-spacing: 0.12em; color: #fff; background: var(--blueberry); padding: 5px 12px; border-radius: 999px; border: 2.5px solid var(--border-ink); }
+        .founder:nth-child(2) .founder-idx { background: var(--plum); }
+        .founder:nth-child(3) .founder-idx { background: var(--sky); }
+        .founder-title { font-family: var(--display); font-weight: 700; font-size: clamp(34px, 3.8vw, 46px); line-height: 1; margin-top: 26px; }
+        .founder:nth-child(1) .founder-title { color: var(--blueberry); }
+        .founder:nth-child(2) .founder-title { color: var(--plum); }
+        .founder:nth-child(3) .founder-title { color: var(--sky); }
+        .founder-meta { margin-top: 22px; padding-top: 18px; border-top: 2.5px dashed var(--border); }
+        .founder-name { font-family: var(--display); font-weight: 600; font-size: 18px; }
+        .founder-role { margin-top: 2px; font-family: var(--display); font-size: 12px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-faint); }
+
+        /* =========================================================
+           13. CTA
+           ========================================================= */
+        .cta { position: relative; overflow: hidden; background: linear-gradient(135deg, var(--blueberry-d), var(--blueberry) 52%, var(--plum)); border: 3px solid var(--border-ink); border-radius: clamp(28px, 4vw, 44px); padding: clamp(46px, 8vw, 96px); text-align: center; color: #fff; box-shadow: var(--pop-md); }
+        .cta::before { content: ""; position: absolute; width: 460px; height: 460px; border-radius: 999px; background: radial-gradient(circle, rgba(255,255,255,0.24), transparent 65%); top: -200px; right: -120px; }
+        .cta::after { content: ""; position: absolute; width: 380px; height: 380px; border-radius: 999px; background: radial-gradient(circle, rgba(255,255,255,0.16), transparent 65%); bottom: -180px; left: -110px; }
         .cta-inner { position: relative; z-index: 2; }
-        .cta-title {
-            font-family: var(--serif); font-weight: 800;
-            font-size: clamp(48px, 7vw, 100px);
-            line-height: 0.96; letter-spacing: -0.035em;
-        }
-        .cta-title em { color: var(--mustard); font-style: italic; }
-        .cta-sub { margin-top: 22px; max-width: 540px; color: var(--text-soft); font-size: 17px; }
-
-        .cta-form {
-            margin-top: 36px;
-            display: flex; gap: 6px; max-width: 540px;
-            background: color-mix(in srgb, var(--bg) 70%, transparent);
-            border: 1px solid var(--border-2);
-            border-radius: 999px;
-            padding: 5px;
-        }
-        .cta-form input {
-            flex: 1; background: transparent; border: none; outline: none;
-            color: var(--text); padding: 14px 22px;
-            font: inherit; font-size: 15px;
-        }
-        .cta-form input::placeholder { color: var(--text-soft); opacity: 0.7; }
-        .cta-form button {
-            background: var(--radish); color: #fff;
-            padding: 14px 22px; border-radius: 999px;
-            font-weight: 600; transition: background 0.2s;
-        }
-        .cta-form button:hover { background: var(--radish-dark); }
-        .cta-alt {
-            margin-top: 18px; font-family: var(--mono); font-size: 12px;
-            color: var(--text-soft);
-        }
-        .cta-alt a { color: var(--text); border-bottom: 1px solid var(--border-2); padding-bottom: 1px; }
-        .cta-alt a:hover { color: var(--radish); border-color: var(--radish); }
+        .cta h2 { font-family: var(--display); font-weight: 700; font-size: clamp(36px, 6vw, 70px); line-height: 1.04; letter-spacing: -0.02em; }
+        .cta h2 em { font-style: normal; color: var(--lemon); }
+        .cta p { margin: 20px auto 0; max-width: 50ch; font-size: 18px; color: rgba(255,255,255,0.9); }
+        .cta-form { margin: 36px auto 0; max-width: 500px; display: flex; gap: 8px; background: rgba(255,255,255,0.16); border: 2.5px solid rgba(255,255,255,0.9); border-radius: 999px; padding: 6px; }
+        .cta-form input { flex: 1; background: transparent; border: none; outline: none; color: #fff; padding: 14px 22px; font: inherit; font-size: 15px; }
+        .cta-form input::placeholder { color: rgba(255,255,255,0.7); }
+        .cta-form button { background: #fff; color: var(--blueberry-d); padding: 14px 26px; border-radius: 999px; font-family: var(--display); font-weight: 600; transition: transform 0.25s var(--bounce), background 0.2s; }
+        .cta-form button:hover { transform: scale(1.06) rotate(-2deg); background: var(--lemon); }
+        .cta-alt { margin-top: 18px; font-family: var(--display); font-size: 13px; color: rgba(255,255,255,0.85); }
+        .cta-alt a { border-bottom: 2px solid rgba(255,255,255,0.6); }
 
         /* =========================================================
-           10. FOOTER
+           14. FOOTER
            ========================================================= */
-        footer {
-            padding: 60px var(--gutter) 32px;
-            max-width: var(--max); margin: 0 auto;
-        }
-        .footer-mega {
-            font-family: var(--serif); font-weight: 800;
-            font-size: clamp(100px, 12vw, 200px);
-            line-height: 0.85; letter-spacing: -0.05em;
-            color: var(--text);
-            margin-bottom: 36px;
-            padding: 0 0.08em;
-            text-align: center;
-        }
-        .footer-mega em { color: var(--radish); font-style: italic; }
-        .footer-foot {
-            padding-top: 24px;
-            border-top: 1px solid var(--border);
-            display: flex; justify-content: space-between; flex-wrap: wrap; gap: 14px;
-            font-family: var(--mono); font-size: 12px; color: var(--text-soft);
-        }
+        footer { padding: 70px 0 130px; }
+        .footer-top { display: flex; justify-content: space-between; gap: 40px; flex-wrap: wrap; padding-bottom: 36px; border-bottom: 2.5px dashed var(--border); }
+        .footer-brand { max-width: 34ch; }
+        .footer-brand .brand { margin-bottom: 14px; }
+        .footer-brand p { color: var(--text-soft); font-size: 15px; }
+        .footer-cols { display: flex; gap: 60px; flex-wrap: wrap; }
+        .footer-col h5 { font-family: var(--display); font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-faint); margin-bottom: 12px; }
+        .footer-col a { display: block; padding: 5px 0; font-size: 15px; color: var(--text-soft); transition: color 0.2s, transform 0.2s var(--bounce); }
+        .footer-col a:hover { color: var(--blueberry); transform: translateX(4px); }
+        .footer-bottom { margin-top: 28px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; font-family: var(--display); font-size: 13px; color: var(--text-faint); }
 
         /* =========================================================
-           11. UTILITIES
+           15. REVEAL
            ========================================================= */
-        .reveal {
-            opacity: 0; transform: translateY(32px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
+        .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s var(--bounce); }
         .reveal.visible { opacity: 1; transform: none; }
 
+        /* =========================================================
+           16. WALKING BLUEBERRY CHARACTER
+           ========================================================= */
+        .berry-walker {
+            position: fixed; bottom: 8px; left: 0; z-index: 60;
+            width: 92px; height: 118px;
+            animation: stroll 26s linear infinite;
+            will-change: transform;
+        }
+        .berry-flip { width: 100%; height: 100%; animation: face 26s linear infinite; transform-origin: 50% 50%; }
+        .berry-bob { width: 100%; height: 100%; animation: bob 0.5s ease-in-out infinite; }
+        .berry-walker .tip {
+            position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%) scale(0.6);
+            margin-bottom: 6px; white-space: nowrap;
+            font-family: var(--display); font-weight: 600; font-size: 12px;
+            background: var(--surface); color: var(--text);
+            border: 2.5px solid var(--border-ink); border-radius: 999px;
+            padding: 5px 12px; box-shadow: var(--pop-sm);
+            opacity: 0; transition: opacity 0.2s, transform 0.25s var(--bounce);
+            pointer-events: none;
+        }
+        .berry-walker:hover .tip { opacity: 1; transform: translateX(-50%) scale(1); }
+        .berry-walker.jump { animation: stroll 26s linear infinite, hop 0.6s var(--bounce); }
+
+        @keyframes stroll {
+            0%   { transform: translateX(4px); }
+            47%  { transform: translateX(calc(100vw - 96px)); }
+            50%  { transform: translateX(calc(100vw - 96px)); }
+            97%  { transform: translateX(4px); }
+            100% { transform: translateX(4px); }
+        }
+        @keyframes face { 0%,47% { transform: scaleX(1); } 50%,97% { transform: scaleX(-1); } 100% { transform: scaleX(1); } }
+        @keyframes bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+        @keyframes hop { 0%,100% { margin-bottom: 0; } 40% { margin-bottom: 90px; } }
+
+        .berry-walker .leg { transform-box: fill-box; transform-origin: top center; }
+        .berry-walker .leg-l { animation: stepL 0.5s ease-in-out infinite; }
+        .berry-walker .leg-r { animation: stepR 0.5s ease-in-out infinite; }
+        @keyframes stepL { 0%,100% { transform: translateY(0) rotate(-6deg); } 50% { transform: translateY(-6px) rotate(8deg); } }
+        @keyframes stepR { 0%,100% { transform: translateY(-6px) rotate(8deg); } 50% { transform: translateY(0) rotate(-6deg); } }
+        .berry-walker .arm { transform-box: fill-box; transform-origin: top center; }
+        .berry-walker .arm-l { animation: swingL 0.5s ease-in-out infinite; }
+        .berry-walker .arm-r { animation: swingR 0.5s ease-in-out infinite; }
+        @keyframes swingL { 0%,100% { transform: rotate(18deg); } 50% { transform: rotate(-18deg); } }
+        @keyframes swingR { 0%,100% { transform: rotate(-18deg); } 50% { transform: rotate(18deg); } }
+        .berry-walker .eyes { transform-box: fill-box; transform-origin: center; animation: blink 4.2s infinite; }
+        @keyframes blink { 0%,92%,100% { transform: scaleY(1); } 96% { transform: scaleY(0.1); } }
+        .berry-walker .shadow { transform-box: fill-box; transform-origin: center; animation: squish 0.5s ease-in-out infinite; }
+        @keyframes squish { 0%,100% { transform: scaleX(1); opacity: 0.22; } 50% { transform: scaleX(0.82); opacity: 0.16; } }
+        @media (max-width: 600px) { .berry-walker { width: 72px; height: 94px; } }
+
         @media (prefers-reduced-motion: reduce) {
-            .reel-stack, .ticker-track, .brand-mark { animation: none !important; }
-            .reveal-word { transform: none; opacity: 1; animation: none; }
+            .rise, .reveal { animation: none !important; opacity: 1 !important; transform: none !important; }
+            .marquee-track, .bubbles i, .berry-walker, .berry-flip, .berry-bob,
+            .leg-l, .leg-r, .arm-l, .arm-r, .eyes, .shadow, .hero-title em, .pill .loc-dot { animation: none !important; }
+            .berry-walker { display: none; }
         }
     </style>
 </head>
 <body>
-    <div class="grain" aria-hidden="true"></div>
+    <div class="ambient" aria-hidden="true">
+        <span class="blob b1"></span>
+        <span class="blob b2"></span>
+    </div>
+    <div class="bubbles" id="bubbles" aria-hidden="true"></div>
 
     <!-- =========================== NAV =========================== -->
-    <header class="nav">
-        <a href="#top" class="brand">
-            <svg class="brand-mark" viewBox="0 0 24 30" aria-hidden="true">
-                <path d="M12 14 C7 8 3 10 4 4 C8 5 10 7 12 10 C14 7 16 5 20 4 C21 10 17 8 12 14 Z" fill="var(--leaf)"/>
-                <path d="M12 13 L12 4" stroke="var(--leaf-dark)" stroke-width="1.2" stroke-linecap="round"/>
-                <ellipse cx="12" cy="21" rx="7.5" ry="8.5" fill="var(--radish)"/>
-                <ellipse cx="9.5" cy="19" rx="1.8" ry="2.6" fill="rgba(255,255,255,0.45)"/>
-                <path d="M12 29.2 Q11 30.6 12.6 31.6" stroke="var(--radish)" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+    <header class="nav" id="nav">
+        <a href="#top" class="brand" aria-label="Blueberry Hub home">
+            <svg class="brand-mark spin" viewBox="0 0 32 32" aria-hidden="true">
+                <defs>
+                    <linearGradient id="bb" x1="0" y1="0" x2="1" y2="1">
+                        <stop offset="0" stop-color="var(--blueberry-2)"/>
+                        <stop offset="1" stop-color="var(--blueberry-d)"/>
+                    </linearGradient>
+                </defs>
+                <circle cx="16" cy="18" r="12" fill="url(#bb)" stroke="var(--border-ink)" stroke-width="2"/>
+                <circle cx="11.5" cy="14" r="2.6" fill="rgba(255,255,255,0.5)"/>
+                <path d="M16 5 l1.7 3.5 3.9 .4 -2.9 2.6 .8 3.8 -3.5 -2 -3.5 2 .8 -3.8 -2.9 -2.6 3.9 -.4 Z" fill="var(--lemon)" stroke="var(--border-ink)" stroke-width="1.4" stroke-linejoin="round"/>
             </svg>
-            <span>Radish Reels</span>
+            <span>Blueberry Hub</span>
+            <span class="llc">LLC</span>
         </a>
 
-        <div class="location-pill" aria-label="Based in Tucson, Arizona">
-            <span class="pin" aria-hidden="true"></span>
-            <span>Tucson, AZ</span>
-            <span class="sep" aria-hidden="true">·</span>
-            <span class="coord">32.22°N</span>
-        </div>
+        <nav class="nav-links">
+            <a href="#services">Services</a>
+            <a href="#results">Results</a>
+            <a href="#process">Process</a>
+            <a href="#founders">Team</a>
+        </nav>
 
         <div class="nav-right">
-            <nav class="nav-links">
-                <a href="#founders">Founders</a>
-                <a href="#contact">Contact</a>
-            </nav>
             <button class="theme-toggle" id="theme-toggle" aria-label="Toggle color theme" title="Toggle theme">
-                <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="12" cy="12" r="4"/>
-                    <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>
-                </svg>
-                <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-                </svg>
+                <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+                <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
             </button>
+            <a href="#contact" class="btn btn-primary nav-cta">Start a project</a>
         </div>
     </header>
 
     <span id="top"></span>
 
     <!-- =========================== HERO =========================== -->
-    <section class="hero">
-        <div class="hero-text">
-            <div class="eyebrow">
-                <span>Short-form studio · Tucson, AZ · Garden to grid</span>
-            </div>
-            <h1 class="display">
-                <span class="reveal-word" style="animation-delay: 0.05s">We&nbsp;make</span>
-                <span class="reveal-word" style="animation-delay: 0.15s">your&nbsp;shop</span><br>
-                <span class="reveal-word stop" style="animation-delay: 0.25s">scroll&#8209;</span><span class="reveal-word stop" style="animation-delay: 0.30s">stopping.</span><br>
-                <span class="reveal-word" style="animation-delay: 0.4s"><em>Bite&#8209;sized</em></span>
-                <span class="reveal-word" style="animation-delay: 0.5s">content,</span>
-                <span class="reveal-word" style="animation-delay: 0.6s">big&nbsp;flavor.</span>
-            </h1>
-            <p class="lede">
-                Radish Reels is a tiny content studio based in <span class="hl-tucson">Tucson,&nbsp;Arizona</span>,
-                making reels, shorts, and stories for the cafés, salons, gyms, and family-run shops
-                that make a town feel like home. Hand-pulled. Locally sourced. A little peppery on purpose.
-            </p>
-            <div class="hero-cta">
-                <a href="#contact" class="btn btn-primary">
-                    <span>Get in touch</span>
-                    <svg class="arr" width="14" height="14" viewBox="0 0 14 14" fill="none">
-                        <path d="M1 13L13 1M13 1H4M13 1V10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </a>
-                <a href="#founders" class="btn btn-ghost">Meet the crew</a>
-            </div>
+    <section class="hero wrap">
+        <span class="pill rise" style="animation-delay:0.05s"><span class="loc-dot"></span> Short-form content studio · Tucson, AZ</span>
+        <h1 class="hero-title rise" style="animation-delay:0.15s">
+            Content that makes your business <em>impossible to scroll past.</em>
+        </h1>
+        <p class="hero-sub rise" style="animation-delay:0.28s">
+            Blueberry Hub is a Tucson-based studio crafting reels, shorts, and social content
+            for local businesses ready to grow their audience and turn views into customers.
+        </p>
+        <div class="hero-cta rise" style="animation-delay:0.4s">
+            <a href="#contact" class="btn btn-primary">
+                Start a project
+                <svg class="arr" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 13L13 1M13 1H4M13 1V10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a href="#services" class="btn btn-ghost">See what we do</a>
         </div>
-
-        <div class="phone-wrap">
-            <div class="phone-sticker" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-                    <circle cx="12" cy="10" r="3"/>
-                </svg>
-                <span>Tucson, AZ</span>
-            </div>
-            <div class="phone">
-                <div class="screen">
-                    <div class="reel-stack">
-                        <article class="reel reel-1">
-                            <span class="reel-num">01 / Intro</span>
-                            <div>
-                                <h3 class="reel-title">Radish<br><em>Reels.</em></h3>
-                            </div>
-                            <span class="reel-foot">Now playing ·</span>
-                        </article>
-                        <article class="reel reel-2">
-                            <span class="reel-num">02 / What we do</span>
-                            <div>
-                                <h3 class="reel-title">Short&#8209;form,<br>for <em>locals.</em></h3>
-                            </div>
-                            <span class="reel-foot">Reels · Shorts · Stories</span>
-                        </article>
-                        <article class="reel reel-3">
-                            <span class="reel-num">03 / How</span>
-                            <div>
-                                <h3 class="reel-title">Fresh&#8209;pulled,<br><em>daily.</em></h3>
-                            </div>
-                            <span class="reel-foot">Hand-cut in-studio</span>
-                        </article>
-                        <article class="reel reel-4">
-                            <span class="reel-num">04 / Who for</span>
-                            <div>
-                                <h3 class="reel-title">Garden<br>to <em>grid.</em></h3>
-                            </div>
-                            <span class="reel-foot">Independent shops only</span>
-                        </article>
-                        <article class="reel reel-5">
-                            <span class="reel-num">05 / Where</span>
-                            <div>
-                                <h3 class="reel-title">Made in<br><em>Tucson,&nbsp;AZ.</em></h3>
-                            </div>
-                            <span class="reel-foot">Open Mon–Fri</span>
-                        </article>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <p class="hero-note rise" style="animation-delay:0.55s">🫐 Trusted by local businesses across Southern Arizona</p>
     </section>
 
-    <!-- =========================== TICKER =========================== -->
-    <section class="ticker" aria-hidden="true">
-        <div class="ticker-track">
-            <span>BAKERIES <span class="dot">●</span> BARBERSHOPS <span class="dot">●</span> CAFÉS <span class="dot">●</span> <span class="loc">TUCSON, AZ ☀</span> <span class="dot">●</span> FLORISTS <span class="dot">●</span> GYMS <span class="dot">●</span> REAL ESTATE <span class="dot">●</span> SALONS <span class="dot">●</span> <span class="loc">PROUDLY OLD PUEBLO ☀</span> <span class="dot">●</span> TAQUERÍAS <span class="dot">●</span> YOGA STUDIOS <span class="dot">●</span> WINERIES <span class="dot">●</span> PIZZERIAS <span class="dot">●</span></span>
-            <span>BAKERIES <span class="dot">●</span> BARBERSHOPS <span class="dot">●</span> CAFÉS <span class="dot">●</span> <span class="loc">TUCSON, AZ ☀</span> <span class="dot">●</span> FLORISTS <span class="dot">●</span> GYMS <span class="dot">●</span> REAL ESTATE <span class="dot">●</span> SALONS <span class="dot">●</span> <span class="loc">PROUDLY OLD PUEBLO ☀</span> <span class="dot">●</span> TAQUERÍAS <span class="dot">●</span> YOGA STUDIOS <span class="dot">●</span> WINERIES <span class="dot">●</span> PIZZERIAS <span class="dot">●</span></span>
+    <!-- =========================== MARQUEE =========================== -->
+    <div class="marquee" aria-hidden="true">
+        <div class="marquee-track">
+            <span>REELS <span class="star">✦</span> SHORTS <span class="star">✦</span> TIKTOK <span class="star">✦</span> INSTAGRAM <span class="star">✦</span> YOUTUBE <span class="star">✦</span> SOCIAL STRATEGY <span class="star">✦</span> BRAND STORY <span class="star">✦</span> TUCSON, AZ <span class="star">✦</span></span>
+            <span>REELS <span class="star">✦</span> SHORTS <span class="star">✦</span> TIKTOK <span class="star">✦</span> INSTAGRAM <span class="star">✦</span> YOUTUBE <span class="star">✦</span> SOCIAL STRATEGY <span class="star">✦</span> BRAND STORY <span class="star">✦</span> TUCSON, AZ <span class="star">✦</span></span>
         </div>
-    </section>
+    </div>
 
-    <!-- =========================== RECEIPTS (stats) =========================== -->
-    <section class="block" id="receipts">
+    <!-- =========================== SERVICES =========================== -->
+    <section class="block wrap" id="services">
         <div class="sec-head reveal">
-            <div>
-                <div class="sec-num">01 / Receipts</div>
-                <h2 class="sec-title">Bring the <em>receipts.</em></h2>
-            </div>
-            <p class="sec-sub">
-                A few honest numbers about why short-form content moves the needle for local shops —
-                from folks who studied it so we don't have to.
-            </p>
+            <span class="eyebrow">What we do</span>
+            <h2>Everything your feed <em>needs.</em></h2>
+            <p>From the first idea to the final export — we handle the whole content pipeline so you can keep running your business.</p>
         </div>
-
-        <div class="stats-row reveal">
-            <article class="stat" style="--accent: var(--radish);">
-                <div class="stat-num">
-                    <span data-count="40">0</span><span class="unit">%</span>
-                </div>
-                <p class="stat-text">
-                    of Gen Z look on TikTok or Instagram first when picking where to eat — instead of Google or Maps.
-                </p>
-                <span class="stat-source">— Google, 2022</span>
+        <div class="services reveal">
+            <article class="service">
+                <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M10 8.5v7l6-3.5-6-3.5z" fill="currentColor" stroke="none"/></svg></div>
+                <span class="num">01</span>
+                <h3>Short-Form Reels</h3>
+                <p>Scroll-stopping reels and shorts shot and edited for Instagram, TikTok, and YouTube — built to get watched all the way through.</p>
             </article>
-
-            <article class="stat" style="--accent: var(--leaf);">
-                <div class="stat-num">
-                    <span data-count="89">0</span><span class="unit">%</span>
-                </div>
-                <p class="stat-text">
-                    of people say a video has convinced them to buy a product or service they were on the fence about.
-                </p>
-                <span class="stat-source">— Wyzowl, State of Video Marketing 2024</span>
+            <article class="service">
+                <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+                <span class="num">02</span>
+                <h3>Social Management</h3>
+                <p>Posting, captions, hashtags, and community replies handled on a steady schedule so your accounts never go quiet.</p>
             </article>
-
-            <article class="stat" style="--accent: var(--mustard);">
-                <div class="stat-num">
-                    <span data-count="17">0</span><span class="unit">hrs</span>
-                </div>
-                <p class="stat-text">
-                    the average person spends watching online video — every single week.
-                </p>
-                <span class="stat-source">— Wyzowl, State of Video Marketing 2024</span>
+            <article class="service">
+                <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></svg></div>
+                <span class="num">03</span>
+                <h3>Content Strategy</h3>
+                <p>A clear monthly plan built around your goals — what to post, when, and why — so every video pulls its weight.</p>
             </article>
-
-            <article class="stat" style="--accent: var(--radish);">
-                <div class="stat-num">
-                    <span class="prefix">#</span><span data-count="1">0</span>
-                </div>
-                <p class="stat-text">
-                    format marketers say delivers the best ROI, three years running: short-form video.
-                </p>
-                <span class="stat-source">— HubSpot, State of Marketing 2024</span>
+            <article class="service">
+                <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg></div>
+                <span class="num">04</span>
+                <h3>Editing &amp; Post</h3>
+                <p>Already have footage? We cut, caption, and polish your raw clips into a month of ready-to-post content.</p>
             </article>
+            <article class="service">
+                <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+                <span class="num">05</span>
+                <h3>Launch Sprints</h3>
+                <p>Opening a location or dropping something new? A focused two-week burst of content built around the moment.</p>
+            </article>
+            <article class="service">
+                <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l2.4 7.4H22l-6 4.5 2.3 7.1-6.3-4.6L5.7 21 8 14 2 9.4h7.6z"/></svg></div>
+                <span class="num">06</span>
+                <h3>Brand Storytelling</h3>
+                <p>The owner, the origin, the regulars — we turn what makes your business special into content people remember.</p>
+            </article>
+        </div>
+    </section>
+
+    <!-- =========================== STATS =========================== -->
+    <section class="block wrap" id="results">
+        <div class="sec-head reveal">
+            <span class="eyebrow">Why it works</span>
+            <h2>The numbers <em>don't lie.</em></h2>
+            <p>A few honest reasons short-form content moves the needle for local businesses — straight from the people who studied it.</p>
+        </div>
+        <div class="stats-grid reveal">
+            <article class="stat">
+                <div class="stat-num"><span data-count="40">0</span><span class="unit">%</span></div>
+                <p>of Gen Z look on TikTok or Instagram first when deciding where to eat — before Google or Maps.</p>
+                <div class="src">Google, 2022</div>
+            </article>
+            <article class="stat">
+                <div class="stat-num"><span data-count="89">0</span><span class="unit">%</span></div>
+                <p>of people say watching a video has convinced them to buy a product or service.</p>
+                <div class="src">Wyzowl · State of Video Marketing 2024</div>
+            </article>
+            <article class="stat">
+                <div class="stat-num"><span data-count="17">0</span><span class="unit">hrs</span></div>
+                <p>the average person spends watching online video — every single week.</p>
+                <div class="src">Wyzowl · State of Video Marketing 2024</div>
+            </article>
+            <article class="stat">
+                <div class="stat-num"><span class="pre">#</span><span data-count="1">0</span></div>
+                <p>format marketers say delivers the best ROI, three years running: short-form video.</p>
+                <div class="src">HubSpot · State of Marketing 2024</div>
+            </article>
+        </div>
+    </section>
+
+    <!-- =========================== PROCESS =========================== -->
+    <section class="block wrap" id="process">
+        <div class="sec-head reveal">
+            <span class="eyebrow">How it works</span>
+            <h2>Simple from <em>start to post.</em></h2>
+            <p>No agency runaround. Three clear steps from first hello to content going live.</p>
+        </div>
+        <div class="process reveal">
+            <div class="step"><div class="badge">1</div><h3>Discover</h3><p>A quick call to learn your business — your goals, your audience, and what makes you worth watching.</p></div>
+            <div class="step"><div class="badge">2</div><h3>Create</h3><p>We shoot, edit, and craft a batch of content. You review everything in a private gallery before it goes anywhere.</p></div>
+            <div class="step"><div class="badge">3</div><h3>Grow</h3><p>We post on a schedule, watch what lands, and double down on what works — month after month.</p></div>
         </div>
     </section>
 
     <!-- =========================== FOUNDERS =========================== -->
-    <section class="block" id="founders">
+    <section class="block wrap" id="founders">
         <div class="sec-head reveal">
-            <div>
-                <div class="sec-num">02 / Founders</div>
-                <h2 class="sec-title">The <em>crew.</em></h2>
-            </div>
-            <p class="sec-sub">
-                Three people. One studio. Different stripes — same appetite for good work.
-            </p>
+            <span class="eyebrow">The team</span>
+            <h2>Three founders, <em>one hub.</em></h2>
+            <p>The people behind Blueberry Hub — different strengths, same obsession with great content.</p>
         </div>
-
         <div class="founders reveal">
             <article class="founder">
-                <div class="founder-head">
-                    <span>No. 01</span>
-                    <span class="founder-glyph" aria-hidden="true">🐵</span>
-                </div>
-                <h3 class="founder-title">The<br><span class="accent">Monkey.</span></h3>
-                <div class="founder-meta">
-                    <span class="founder-name">Vincent Adam Duong - "I'm not racist but..."</span>
-                    <span class="founder-role">Co-founder</span>
-                </div>
+                <div class="founder-top"><span class="founder-idx">No. 01</span><span class="founder-glyph" aria-hidden="true">🐵</span></div>
+                <h3 class="founder-title">The Monkey</h3>
+                <div class="founder-meta"><div class="founder-name">Vincent Adam Duong</div><div class="founder-role">Co-founder</div></div>
             </article>
-
             <article class="founder">
-                <div class="founder-head">
-                    <span>No. 02</span>
-                    <span class="founder-glyph" aria-hidden="true">🦍</span>
-                </div>
-                <h3 class="founder-title">The<br><span class="accent">Gorilla.</span></h3>
-                <div class="founder-meta">
-                    <span class="founder-name">Mackynzie Kalleen Ward - "I'm not gay but..."</span>
-                    <span class="founder-role">Co-founder</span>
-                </div>
+                <div class="founder-top"><span class="founder-idx">No. 02</span><span class="founder-glyph" aria-hidden="true">🦍</span></div>
+                <h3 class="founder-title">The Gorilla</h3>
+                <div class="founder-meta"><div class="founder-name">Tyler Knight</div><div class="founder-role">Co-founder</div></div>
             </article>
-
             <article class="founder">
-                <div class="founder-head">
-                    <span>No. 03</span>
-                    <span class="founder-glyph" aria-hidden="true">🐯</span>
-                </div>
-                <h3 class="founder-title">The<br><span class="accent">Tiger.</span></h3>
-                <div class="founder-meta">
-                    <span class="founder-name">Tyler Knight</span>
-                    <span class="founder-role">Co-founder</span>
-                </div>
+                <div class="founder-top"><span class="founder-idx">No. 03</span><span class="founder-glyph" aria-hidden="true">🐯</span></div>
+                <h3 class="founder-title">The Tiger</h3>
+                <div class="founder-meta"><div class="founder-name">Mackynzie Kalleen Ward</div><div class="founder-role">Co-founder</div></div>
             </article>
         </div>
     </section>
 
     <!-- =========================== CTA =========================== -->
-    <section class="block" id="contact" style="padding-top: 0;">
-        <div class="cta-wrap reveal">
+    <section class="block wrap" id="contact">
+        <div class="cta reveal">
             <div class="cta-inner">
-                <div class="sec-num" style="margin-bottom: 18px;">03 / Say hi</div>
-                <h2 class="cta-title">Let's get <em>cooking.</em></h2>
-                <p class="cta-sub">
-                    Drop your email and we'll get back to you with a short questionnaire and a time to chat. No decks, no pressure.
-                </p>
-
-                <form class="cta-form" onsubmit="event.preventDefault(); var b = this.querySelector('button'); b.innerText = '✓ on the way'; b.disabled = true;">
-                    <input type="email" placeholder="you@yourshop.com" required>
-                    <button type="submit">Send</button>
+                <h2>Let's grow your <em>audience.</em></h2>
+                <p>Drop your email and we'll get back to you with a few questions and a time to chat. No decks, no pressure.</p>
+                <form class="cta-form" onsubmit="event.preventDefault(); var b=this.querySelector('button'); b.innerText='✓ Sent!'; b.disabled=true;">
+                    <input type="email" placeholder="you@yourbusiness.com" required aria-label="Your email">
+                    <button type="submit">Get started</button>
                 </form>
-
-                <p class="cta-alt">
-                    or email <a href="mailto:hello@radishreels.com">eamwim@gmail.com</a>
-                </p>
+                <p class="cta-alt">or email <a href="mailto:hello@blueberryhub.co">hello@blueberryhub.co</a></p>
             </div>
         </div>
     </section>
 
     <!-- =========================== FOOTER =========================== -->
-    <footer>
-        <div class="footer-mega">Radish<em>&nbsp;Reels.</em></div>
-        <div class="footer-foot">
-            <span>© <span id="year">2026</span> Radish Reels · Made in Tucson, AZ</span>
-            <span><a href="mailto:hello@radishreels.com">hello@radishreels.com</a></span>
+    <footer class="wrap">
+        <div class="footer-top">
+            <div class="footer-brand">
+                <div class="brand">
+                    <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true">
+                        <circle cx="16" cy="18" r="12" fill="url(#bb)" stroke="var(--border-ink)" stroke-width="2"/>
+                        <circle cx="11.5" cy="14" r="2.6" fill="rgba(255,255,255,0.5)"/>
+                        <path d="M16 5 l1.7 3.5 3.9 .4 -2.9 2.6 .8 3.8 -3.5 -2 -3.5 2 .8 -3.8 -2.9 -2.6 3.9 -.4 Z" fill="var(--lemon)" stroke="var(--border-ink)" stroke-width="1.4" stroke-linejoin="round"/>
+                    </svg>
+                    <span>Blueberry Hub</span>
+                    <span class="llc">LLC</span>
+                </div>
+                <p>A short-form content studio helping Tucson's local businesses get seen, watched, and remembered.</p>
+            </div>
+            <div class="footer-cols">
+                <div class="footer-col">
+                    <h5>Studio</h5>
+                    <a href="#services">Services</a>
+                    <a href="#results">Results</a>
+                    <a href="#process">Process</a>
+                    <a href="#founders">Team</a>
+                </div>
+                <div class="footer-col">
+                    <h5>Connect</h5>
+                    <a href="#">Instagram</a>
+                    <a href="#">TikTok</a>
+                    <a href="#">YouTube</a>
+                    <a href="mailto:hello@blueberryhub.co">Email us</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>© <span id="year">2026</span> Blueberry Hub LLC · Tucson, Arizona</span>
+            <span>Made with 🫐 in Tucson, AZ</span>
         </div>
     </footer>
 
+    <!-- =========================== WALKING BLUEBERRY =========================== -->
+    <div class="berry-walker" id="berry" title="Hi! I'm Blue">
+        <span class="tip">Hi, I'm Blue! 🫐</span>
+        <div class="berry-flip">
+            <div class="berry-bob">
+                <svg viewBox="0 0 92 118" aria-hidden="true">
+                    <defs>
+                        <radialGradient id="berryBody" cx="38%" cy="32%" r="72%">
+                            <stop offset="0" stop-color="var(--blueberry-2)"/>
+                            <stop offset="70%" stop-color="var(--blueberry)"/>
+                            <stop offset="100%" stop-color="var(--blueberry-d)"/>
+                        </radialGradient>
+                    </defs>
+
+                    <!-- ground shadow -->
+                    <ellipse class="shadow" cx="46" cy="112" rx="26" ry="5" fill="#241B4A"/>
+
+                    <!-- legs -->
+                    <rect class="leg leg-l" x="33" y="86" width="11" height="26" rx="5.5" fill="var(--blueberry-d)" stroke="#241B4A" stroke-width="2.5"/>
+                    <rect class="leg leg-r" x="48" y="86" width="11" height="26" rx="5.5" fill="var(--blueberry-d)" stroke="#241B4A" stroke-width="2.5"/>
+
+                    <!-- arms -->
+                    <rect class="arm arm-l" x="6" y="54" width="10" height="26" rx="5" fill="var(--blueberry)" stroke="#241B4A" stroke-width="2.5"/>
+                    <rect class="arm arm-r" x="76" y="54" width="10" height="26" rx="5" fill="var(--blueberry)" stroke="#241B4A" stroke-width="2.5"/>
+
+                    <!-- body -->
+                    <circle cx="46" cy="56" r="34" fill="url(#berryBody)" stroke="#241B4A" stroke-width="3"/>
+                    <!-- shine -->
+                    <ellipse cx="34" cy="44" rx="9" ry="6" fill="rgba(255,255,255,0.55)" transform="rotate(-25 34 44)"/>
+
+                    <!-- crown star -->
+                    <path d="M46 12 l3 6.4 7 .7 -5.2 4.7 1.5 6.9 -6.3 -3.6 -6.3 3.6 1.5 -6.9 -5.2 -4.7 7 -.7 Z" fill="var(--lemon)" stroke="#241B4A" stroke-width="2.4" stroke-linejoin="round"/>
+
+                    <!-- face -->
+                    <g class="eyes">
+                        <circle cx="36" cy="55" r="7.5" fill="#fff" stroke="#241B4A" stroke-width="2.2"/>
+                        <circle cx="56" cy="55" r="7.5" fill="#fff" stroke="#241B4A" stroke-width="2.2"/>
+                        <circle cx="37.5" cy="56.5" r="3.4" fill="#241B4A"/>
+                        <circle cx="57.5" cy="56.5" r="3.4" fill="#241B4A"/>
+                        <circle cx="39" cy="55" r="1.1" fill="#fff"/>
+                        <circle cx="59" cy="55" r="1.1" fill="#fff"/>
+                    </g>
+                    <!-- cheeks -->
+                    <ellipse cx="28" cy="66" rx="4.5" ry="3" fill="var(--pink)" opacity="0.8"/>
+                    <ellipse cx="64" cy="66" rx="4.5" ry="3" fill="var(--pink)" opacity="0.8"/>
+                    <!-- smile -->
+                    <path d="M40 68 q6 7 12 0" fill="none" stroke="#241B4A" stroke-width="2.6" stroke-linecap="round"/>
+                </svg>
+            </div>
+        </div>
+    </div>
+
     <!-- =========================== SCRIPTS =========================== -->
     <script>
-        // ---- Theme toggle (persists in localStorage)
+        // Theme toggle
         (function () {
             const root = document.documentElement;
-            const btn = document.getElementById('theme-toggle');
-            btn.addEventListener('click', () => {
-                const isLight = root.getAttribute('data-theme') === 'light';
-                if (isLight) {
-                    root.removeAttribute('data-theme');
-                    try { localStorage.setItem('rr-theme', 'dark'); } catch (e) {}
-                } else {
-                    root.setAttribute('data-theme', 'light');
-                    try { localStorage.setItem('rr-theme', 'light'); } catch (e) {}
-                }
+            document.getElementById('theme-toggle').addEventListener('click', () => {
+                const dark = root.getAttribute('data-theme') === 'dark';
+                if (dark) { root.removeAttribute('data-theme'); try { localStorage.setItem('bh-theme', 'light'); } catch(e){} }
+                else { root.setAttribute('data-theme', 'dark'); try { localStorage.setItem('bh-theme', 'dark'); } catch(e){} }
             });
         })();
 
-        // ---- Year in footer
+        // Floating bubbles
+        (function () {
+            const box = document.getElementById('bubbles');
+            const N = 14;
+            for (let i = 0; i < N; i++) {
+                const b = document.createElement('i');
+                const size = 12 + Math.random() * 46;
+                b.style.width = b.style.height = size + 'px';
+                b.style.left = Math.random() * 100 + 'vw';
+                b.style.animationDuration = (14 + Math.random() * 16) + 's';
+                b.style.animationDelay = (-Math.random() * 24) + 's';
+                box.appendChild(b);
+            }
+        })();
+
+        // Year
         document.getElementById('year').textContent = new Date().getFullYear();
 
-        // ---- Reveal on scroll
+        // Blueberry hops when clicked
+        (function () {
+            const berry = document.getElementById('berry');
+            berry.addEventListener('click', () => {
+                berry.classList.remove('jump');
+                void berry.offsetWidth;
+                berry.classList.add('jump');
+            });
+            berry.addEventListener('animationend', (e) => { if (e.animationName === 'hop') berry.classList.remove('jump'); });
+        })();
+
+        // Reveal on scroll
         (function () {
             const io = new IntersectionObserver((entries) => {
-                entries.forEach(e => {
-                    if (e.isIntersecting) {
-                        e.target.classList.add('visible');
-                        io.unobserve(e.target);
-                    }
-                });
+                entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
             }, { threshold: 0.12 });
             document.querySelectorAll('.reveal').forEach(el => io.observe(el));
         })();
 
-        // ---- Stats count-up animation
+        // Stat count-up
         (function () {
             const els = document.querySelectorAll('[data-count]');
             if (!els.length) return;
@@ -981,21 +782,17 @@
             const io = new IntersectionObserver((entries) => {
                 entries.forEach(e => {
                     if (!e.isIntersecting) return;
-                    const el = e.target;
-                    const target = parseFloat(el.dataset.count);
+                    const el = e.target, target = parseFloat(el.dataset.count);
                     if (reduce) { el.textContent = target; io.unobserve(el); return; }
-                    const start = performance.now();
-                    const dur = 1500;
-                    function step(now) {
+                    const start = performance.now(), dur = 1500;
+                    (function step(now){
                         const p = Math.min(1, (now - start) / dur);
-                        const eased = 1 - Math.pow(1 - p, 3);
-                        el.textContent = Math.round(target * eased);
+                        el.textContent = Math.round(target * (1 - Math.pow(1 - p, 3)));
                         if (p < 1) requestAnimationFrame(step);
-                    }
-                    requestAnimationFrame(step);
+                    })(start);
                     io.unobserve(el);
                 });
-            }, { threshold: 0.45 });
+            }, { threshold: 0.5 });
             els.forEach(el => io.observe(el));
         })();
     </script>
