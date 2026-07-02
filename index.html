@@ -3,90 +3,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Blueberry Hub LLC — a Tucson-based short-form content studio crafting reels, shorts, and social content for local businesses.">
-    <meta name="theme-color" content="#FBF7FF" media="(prefers-color-scheme: light)">
-    <meta name="theme-color" content="#0B0A18" media="(prefers-color-scheme: dark)">
-    <title>Blueberry Hub — short-form content studio in Tucson, AZ</title>
+    <meta name="description" content="Blueberry Hub — a small Tucson video team. We film three short videos for your local business and send them to your phone the same day.">
+    <meta name="theme-color" content="#EDF2FF" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#081132" media="(prefers-color-scheme: dark)">
+    <title>Blueberry Hub — short videos for local Tucson businesses</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Inter:wght@400;450;500;600&display=swap" rel="stylesheet">
 
-    <!-- Theme init before paint (light default, dark opt-in) -->
     <script>
         (function () {
-            try {
-                if (localStorage.getItem('bh-theme') === 'dark') {
-                    document.documentElement.setAttribute('data-theme', 'dark');
-                }
-            } catch (e) {}
+            try { if (localStorage.getItem('bh-theme') === 'dark') document.documentElement.setAttribute('data-theme', 'dark'); } catch (e) {}
         })();
     </script>
 
     <style>
         /* =========================================================
-           1. TOKENS
+           1. TOKENS — cartoony + deep navy
            ========================================================= */
         :root {
-            --bg:         #FBF7FF;
-            --bg-tint:    #F1EAFF;
+            --bg:         #EDF2FF;
+            --bg-tint:    #DCE6FF;
             --surface:    #FFFFFF;
-            --surface-2:  #F5EFFF;
-            --text:       #241B4A;
-            --text-soft:  #6B5F97;
-            --text-faint: #A99FCB;
-            --border:     #E4DAFB;
-            --border-ink: #241B4A;
+            --surface-2:  #EAF1FF;
+            --text:       #0B1A44;
+            --text-soft:  #46578A;
+            --text-faint: #91A0CB;
+            --border:     #CBD8F6;
+            --ink:        #0B1A44;   /* cartoony outline */
 
-            --blueberry:   #6C4BE6;
-            --blueberry-2: #8F72FF;
-            --blueberry-d: #4A2FC0;
-            --plum:        #B85CE6;
-            --sky:         #5B8DFF;
-            --pink:        #FF8FC7;
-            --lemon:       #FFD34E;
-            --frost:       #EDE6FF;
+            --navy:       #12275E;   /* deep "969" navy */
+            --navy-d:     #0B1A44;
+            --azure:      #3E6DF0;
+            --sky:        #6E93F5;
+            --lemon:      #FFD24D;
+            --cheek:      #8FB0FF;
 
-            --ring: 0 0 0 3px rgba(108, 75, 230, 0.18);
-            --pop-sm: 4px 4px 0 var(--border-ink);
-            --pop-md: 7px 7px 0 var(--border-ink);
-            --soft-md: 0 22px 44px -22px rgba(74, 47, 192, 0.45);
+            --btn-bg:     #12275E;   /* primary action */
+            --on-btn:     #FFFFFF;
+
+            --pop-sm: 4px 4px 0 var(--ink);
+            --pop-md: 7px 7px 0 var(--ink);
+            --soft:   0 20px 40px -22px rgba(11, 26, 68, 0.5);
 
             --display: 'Fredoka', system-ui, sans-serif;
             --body:    'Inter', system-ui, -apple-system, sans-serif;
-
             --bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
 
-            --max: 1200px;
-            --gutter: clamp(22px, 5vw, 80px);
-            --radius: 30px;
-            --radius-sm: 20px;
+            --max: 1180px;
+            --gutter: clamp(18px, 5vw, 72px);
+            --radius: 28px;
+            --radius-sm: 18px;
 
             color-scheme: light;
         }
         :root[data-theme="dark"] {
-            --bg:         #0B0A18;
-            --bg-tint:    #15122E;
-            --surface:    #17142F;
-            --surface-2:  #1F1B3D;
-            --text:       #F4F0FF;
-            --text-soft:  #B4ACDB;
-            --text-faint: #726BA0;
-            --border:     #322C58;
-            --border-ink: #0B0A18;
+            --bg:         #081132;
+            --bg-tint:    #0C1840;
+            --surface:    #10204E;
+            --surface-2:  #16296B;
+            --text:       #EAF0FF;
+            --text-soft:  #A9B7DD;
+            --text-faint: #6E7CA8;
+            --border:     #26386E;
+            --ink:        #040B22;
 
-            --blueberry:   #9A80FF;
-            --blueberry-2: #B6A2FF;
-            --blueberry-d: #7A5DF0;
-            --plum:        #D28BFF;
-            --sky:         #7CA1FF;
-            --pink:        #FF9FD1;
-            --lemon:       #FFDD70;
-            --frost:       #241F47;
+            --navy:       #16296B;
+            --navy-d:     #0B1A44;
+            --azure:      #6E93F5;
+            --sky:        #93B0FF;
 
-            --pop-sm: 4px 4px 0 rgba(0,0,0,0.55);
-            --pop-md: 7px 7px 0 rgba(0,0,0,0.55);
-            --soft-md: 0 22px 44px -22px rgba(0, 0, 0, 0.8);
+            --btn-bg:     #3E6DF0;
+            --on-btn:     #FFFFFF;
+
+            --pop-sm: 4px 4px 0 rgba(0,0,0,0.5);
+            --pop-md: 7px 7px 0 rgba(0,0,0,0.5);
+            --soft:   0 20px 40px -22px rgba(0,0,0,0.8);
 
             color-scheme: dark;
         }
@@ -109,30 +102,24 @@
         img, svg { display: block; max-width: 100%; }
         a { color: inherit; text-decoration: none; }
         button { font: inherit; cursor: pointer; border: none; background: none; color: inherit; }
-        ::selection { background: var(--blueberry); color: #fff; }
+        input { font: inherit; }
+        ::selection { background: var(--navy); color: #fff; }
 
         /* =========================================================
-           3. BACKGROUND — blobs + rising bubbles
+           3. BACKGROUND BUBBLES
            ========================================================= */
-        .ambient { position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; }
-        .blob { position: absolute; border-radius: 999px; filter: blur(90px); opacity: 0.45; }
-        .blob.b1 { width: 620px; height: 620px; top: -240px; right: -160px; background: radial-gradient(circle, var(--blueberry-2), transparent 68%); }
-        .blob.b2 { width: 520px; height: 520px; top: 45%; left: -220px; background: radial-gradient(circle, var(--plum), transparent 68%); opacity: 0.3; }
-        :root[data-theme="dark"] .blob { opacity: 0.32; }
-
-        .bubbles { position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; }
+        .bubbles { position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; transform: translateZ(0); contain: strict; }
         .bubbles i {
             position: absolute; bottom: -80px; border-radius: 999px;
-            background: radial-gradient(circle at 32% 30%, rgba(255,255,255,0.9), var(--blueberry-2) 60%, var(--blueberry-d));
-            opacity: 0.16;
-            animation: floatUp linear infinite;
+            background: radial-gradient(circle at 34% 30%, rgba(255,255,255,0.8), var(--sky) 60%, var(--navy));
+            opacity: 0.12; animation: floatUp linear infinite; will-change: transform;
         }
-        :root[data-theme="dark"] .bubbles i { opacity: 0.12; }
+        :root[data-theme="dark"] .bubbles i { opacity: 0.14; }
         @keyframes floatUp {
-            0%   { transform: translateY(0) scale(0.7); opacity: 0; }
-            10%  { opacity: 0.18; }
-            90%  { opacity: 0.14; }
-            100% { transform: translateY(-112vh) scale(1.05); opacity: 0; }
+            0%   { transform: translate3d(0,0,0) scale(0.7); opacity: 0; }
+            12%  { opacity: 0.14; }
+            88%  { opacity: 0.10; }
+            100% { transform: translate3d(0,-112vh,0) scale(1.05); opacity: 0; }
         }
 
         /* =========================================================
@@ -142,270 +129,275 @@
         .eyebrow {
             display: inline-flex; align-items: center; gap: 8px;
             font-family: var(--display); font-size: 13px; font-weight: 600;
-            text-transform: uppercase; letter-spacing: 0.12em;
-            color: var(--blueberry-d);
-            background: var(--frost);
-            padding: 8px 16px; border-radius: 999px;
+            text-transform: uppercase; letter-spacing: 0.1em;
+            color: var(--navy); background: var(--lemon);
+            padding: 8px 16px; border-radius: 999px; border: 2.5px solid var(--ink);
+            box-shadow: var(--pop-sm);
         }
+        :root[data-theme="dark"] .eyebrow { color: var(--navy-d); }
 
         .btn {
-            display: inline-flex; align-items: center; gap: 10px;
-            padding: 15px 28px; border-radius: 999px;
+            display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+            padding: 15px 26px; min-height: 52px; border-radius: 999px;
             font-family: var(--display); font-weight: 600; font-size: 16px;
-            transition: transform 0.25s var(--bounce), background 0.25s, color 0.25s, box-shadow 0.25s, border-color 0.25s;
+            border: 2.5px solid var(--ink); box-shadow: var(--pop-sm);
+            transition: transform 0.22s var(--bounce), box-shadow 0.22s, background 0.22s, color 0.22s;
         }
-        .btn-primary { background: var(--blueberry); color: #fff; border: 2.5px solid var(--border-ink); box-shadow: var(--pop-sm); }
-        .btn-primary:hover { transform: translate(-2px, -3px) rotate(-1deg); box-shadow: var(--pop-md); background: var(--blueberry-d); }
-        .btn-primary:active { transform: translate(2px, 2px); box-shadow: 2px 2px 0 var(--border-ink); }
+        .btn-primary { background: var(--btn-bg); color: var(--on-btn); }
+        .btn-primary:hover { transform: translate(-2px,-3px); box-shadow: var(--pop-md); }
+        .btn-primary:active { transform: translate(2px,2px); box-shadow: 2px 2px 0 var(--ink); }
         .btn-primary .arr { transition: transform 0.2s; }
-        .btn-primary:hover .arr { transform: translate(3px, -3px); }
-        .btn-ghost { background: var(--surface); border: 2.5px solid var(--border-ink); color: var(--text); box-shadow: var(--pop-sm); }
-        .btn-ghost:hover { transform: translate(-2px, -3px) rotate(1deg); box-shadow: var(--pop-md); color: var(--blueberry); }
-        .btn-ghost:active { transform: translate(2px, 2px); box-shadow: 2px 2px 0 var(--border-ink); }
+        .btn-primary:hover .arr { transform: translate(3px,-3px); }
+        .btn-ghost { background: var(--surface); color: var(--text); }
+        .btn-ghost:hover { transform: translate(-2px,-3px); box-shadow: var(--pop-md); color: var(--azure); }
+        .btn-ghost:active { transform: translate(2px,2px); box-shadow: 2px 2px 0 var(--ink); }
 
         /* =========================================================
            5. NAV
            ========================================================= */
         .nav {
-            position: fixed; top: 14px; left: 50%; transform: translateX(-50%); z-index: 100;
-            width: calc(100% - 28px); max-width: var(--max);
-            display: flex; align-items: center; justify-content: space-between; gap: 20px;
-            padding: 12px 12px 12px 22px;
-            border-radius: 999px;
-            border: 2.5px solid var(--border-ink);
-            background: color-mix(in srgb, var(--surface) 88%, transparent);
-            backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+            position: fixed; top: 12px; left: 50%; z-index: 100;
+            transform: translateX(-50%) translateZ(0);
+            width: calc(100% - 24px); max-width: var(--max);
+            display: flex; align-items: center; justify-content: space-between; gap: 12px;
+            padding: 10px 10px 10px 18px;
+            border-radius: 999px; border: 2.5px solid var(--ink);
+            background: var(--surface);
             box-shadow: var(--pop-sm);
+            -webkit-backface-visibility: hidden; backface-visibility: hidden;
         }
-        .brand { display: flex; align-items: center; gap: 10px; font-family: var(--display); font-weight: 700; font-size: 20px; letter-spacing: -0.01em; }
-        .brand-mark { width: 34px; height: 34px; flex-shrink: 0; }
-        .brand-mark.spin:hover { animation: spin360 0.7s var(--bounce); }
-        @keyframes spin360 { to { transform: rotate(360deg); } }
-        .brand .llc { font-size: 10px; font-weight: 600; color: var(--text-faint); letter-spacing: 0.14em; align-self: flex-start; margin-top: 3px; }
+        .brand { display: flex; align-items: center; gap: 9px; font-family: var(--display); font-weight: 700; font-size: 19px; letter-spacing: -0.01em; }
+        .brand-mark { width: 32px; height: 32px; flex-shrink: 0; transition: transform 0.6s var(--bounce); }
+        .brand:hover .brand-mark { transform: rotate(-16deg) scale(1.1); }
+        .brand .llc { font-size: 10px; font-weight: 600; color: var(--text-faint); letter-spacing: 0.12em; align-self: flex-start; margin-top: 3px; }
+        @media (max-width: 400px) { .brand span:not(.llc) { font-size: 17px; } .brand .llc { display: none; } }
 
         .nav-links { display: flex; gap: 2px; }
-        .nav-links a { padding: 9px 15px; border-radius: 999px; font-family: var(--display); font-size: 15px; font-weight: 500; color: var(--text-soft); transition: background 0.2s, color 0.2s, transform 0.2s var(--bounce); }
-        .nav-links a:hover { background: var(--frost); color: var(--blueberry-d); transform: translateY(-2px); }
-        @media (max-width: 800px) { .nav-links { display: none; } }
+        .nav-links a { padding: 9px 14px; border-radius: 999px; font-family: var(--display); font-size: 15px; font-weight: 500; color: var(--text-soft); transition: background 0.2s, color 0.2s; }
+        .nav-links a:hover { background: var(--surface-2); color: var(--navy); }
+        @media (max-width: 860px) { .nav-links { display: none; } }
 
-        .nav-right { display: flex; align-items: center; gap: 10px; }
+        .nav-right { display: flex; align-items: center; gap: 8px; }
         .theme-toggle {
-            width: 42px; height: 42px; display: grid; place-items: center;
-            border-radius: 999px; border: 2.5px solid var(--border-ink); background: var(--surface);
+            width: 44px; height: 44px; display: grid; place-items: center; flex-shrink: 0;
+            border-radius: 999px; border: 2.5px solid var(--ink); background: var(--surface);
             transition: transform 0.3s var(--bounce), background 0.2s;
         }
-        .theme-toggle:hover { background: var(--frost); transform: rotate(20deg) scale(1.05); }
+        .theme-toggle:hover { background: var(--surface-2); transform: rotate(20deg); }
         .theme-toggle svg { width: 18px; height: 18px; }
         .theme-toggle .icon-moon { display: none; }
         :root[data-theme="dark"] .theme-toggle .icon-sun { display: none; }
         :root[data-theme="dark"] .theme-toggle .icon-moon { display: block; }
-        .nav .btn { padding: 12px 22px; }
-        @media (max-width: 560px) { .nav .nav-cta { display: none; } }
+        .nav .btn { padding: 11px 18px; min-height: 44px; font-size: 14px; }
+        @media (max-width: 380px) { .nav .nav-cta { padding: 11px 14px; } }
 
         /* =========================================================
            6. HERO
            ========================================================= */
-        .hero { padding: 168px 0 90px; text-align: center; position: relative; }
+        .hero { padding: 132px 0 70px; text-align: center; }
+        @media (min-width: 700px) { .hero { padding-top: 158px; } }
         .hero .pill {
             display: inline-flex; align-items: center; gap: 9px;
-            padding: 9px 18px; border-radius: 999px;
-            background: var(--surface); border: 2.5px solid var(--border-ink);
-            box-shadow: var(--pop-sm);
-            font-family: var(--display); font-size: 13px; font-weight: 500;
-            color: var(--text); margin-bottom: 28px;
+            padding: 9px 18px; border-radius: 999px; margin-bottom: 26px;
+            background: var(--surface); border: 2.5px solid var(--ink); box-shadow: var(--pop-sm);
+            font-family: var(--display); font-size: 13px; font-weight: 500; color: var(--text);
         }
-        .hero .pill .loc-dot { width: 8px; height: 8px; border-radius: 999px; background: var(--blueberry); animation: blip 1.6s ease-in-out infinite; }
+        .hero .pill .dot { width: 9px; height: 9px; border-radius: 999px; background: var(--azure); animation: blip 1.6s ease-in-out infinite; }
         @keyframes blip { 0%,100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.5); opacity: 0.5; } }
 
         h1.hero-title {
             font-family: var(--display); font-weight: 700;
-            font-size: clamp(42px, 7.4vw, 92px);
-            line-height: 1.03; letter-spacing: -0.02em;
-            max-width: 16ch; margin: 0 auto;
+            font-size: clamp(38px, 9vw, 88px);
+            line-height: 1.02; letter-spacing: -0.02em;
+            max-width: 15ch; margin: 0 auto;
         }
         h1.hero-title em {
-            font-style: normal; color: #fff; background: var(--blueberry);
-            padding: 0 0.22em; border-radius: 18px; display: inline-block;
-            border: 2.5px solid var(--border-ink); box-shadow: var(--pop-sm);
-            transform: rotate(-1.5deg);
-            animation: wobbleWord 5s ease-in-out infinite;
+            font-style: normal; color: #fff; background: var(--navy);
+            padding: 0 0.2em; border-radius: 16px; display: inline-block;
+            border: 2.5px solid var(--ink); box-shadow: var(--pop-sm);
+            transform: rotate(-1.5deg); animation: wob 5s ease-in-out infinite;
         }
-        @keyframes wobbleWord { 0%,100% { transform: rotate(-1.5deg); } 50% { transform: rotate(1.5deg); } }
-        .hero-sub { margin: 30px auto 0; max-width: 58ch; font-size: clamp(17px, 1.5vw, 20px); color: var(--text-soft); }
-        .hero-cta { margin-top: 38px; display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
-        .hero-note { margin-top: 50px; font-family: var(--display); font-size: 13px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.14em; color: var(--text-faint); }
+        :root[data-theme="dark"] h1.hero-title em { background: var(--azure); }
+        @keyframes wob { 0%,100% { transform: rotate(-1.5deg); } 50% { transform: rotate(1.5deg); } }
+        .hero-sub { margin: 26px auto 0; max-width: 54ch; font-size: clamp(16px, 2.4vw, 20px); color: var(--text-soft); }
+        .hero-cta { margin-top: 34px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+        @media (max-width: 460px) { .hero-cta .btn { width: 100%; } }
 
-        .rise { opacity: 0; transform: translateY(26px); animation: rise 0.85s var(--bounce) forwards; }
+        .hero-badge {
+            margin: 40px auto 0; display: inline-flex; align-items: center; gap: 12px;
+            background: var(--lemon); color: var(--navy);
+            border: 2.5px solid var(--ink); box-shadow: var(--pop-sm);
+            border-radius: 999px; padding: 12px 22px;
+            font-family: var(--display); font-weight: 600; font-size: clamp(15px, 4vw, 19px);
+            transform: rotate(-1.2deg);
+        }
+        .hero-badge .price { font-size: 1.25em; font-weight: 700; }
+        .hero-badge .divider { width: 2px; height: 22px; background: var(--navy); opacity: 0.35; border-radius: 2px; }
+
+        .rise { opacity: 0; transform: translateY(24px); animation: rise 0.8s var(--bounce) forwards; }
         @keyframes rise { to { opacity: 1; transform: none; } }
 
         /* =========================================================
-           7. MARQUEE
+           7. MARQUEE (continuous)
            ========================================================= */
-        .marquee { overflow: hidden; padding: 18px 0; border-top: 2.5px solid var(--border-ink); border-bottom: 2.5px solid var(--border-ink); background: var(--blueberry); color: #fff; }
-        .marquee-track { display: flex; gap: 40px; width: max-content; animation: scroll 30s linear infinite; }
-        .marquee-track span { display: inline-flex; align-items: center; gap: 40px; font-family: var(--display); font-weight: 600; font-size: 17px; text-transform: uppercase; letter-spacing: 0.1em; white-space: nowrap; }
+        .marquee { overflow: hidden; padding: 16px 0; background: var(--navy); color: #fff; border-top: 2.5px solid var(--ink); border-bottom: 2.5px solid var(--ink); margin-top: 24px; }
+        .marquee-track { display: flex; gap: 34px; width: max-content; animation: scroll 30s linear infinite; will-change: transform; }
+        .marquee-track span { display: inline-flex; align-items: center; gap: 34px; font-family: var(--display); font-weight: 600; font-size: clamp(15px, 4vw, 19px); text-transform: uppercase; letter-spacing: 0.08em; white-space: nowrap; }
         .marquee-track .star { color: var(--lemon); }
-        .marquee:hover .marquee-track { animation-play-state: paused; }
-        @keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+        @keyframes scroll { from { transform: translate3d(0,0,0); } to { transform: translate3d(-50%,0,0); } }
 
         /* =========================================================
            8. SECTION HEADS
            ========================================================= */
-        section.block { padding: clamp(72px, 10vw, 128px) 0; }
-        .sec-head { max-width: 760px; margin: 0 auto clamp(44px, 6vw, 66px); text-align: center; }
-        .sec-head h2 { font-family: var(--display); font-weight: 700; font-size: clamp(34px, 5vw, 60px); line-height: 1.05; letter-spacing: -0.02em; margin-top: 16px; }
-        .sec-head h2 em { font-style: normal; color: var(--blueberry); }
-        .sec-head p { margin-top: 16px; font-size: 18px; color: var(--text-soft); }
+        section.block { padding: clamp(64px, 10vw, 120px) 0; }
+        .sec-head { max-width: 720px; margin: 0 auto clamp(40px, 6vw, 60px); text-align: center; }
+        .sec-head h2 { font-family: var(--display); font-weight: 700; font-size: clamp(30px, 6vw, 56px); line-height: 1.06; letter-spacing: -0.02em; margin-top: 14px; }
+        .sec-head h2 em { font-style: normal; color: var(--azure); }
+        .sec-head p { margin-top: 14px; font-size: clamp(16px, 2.2vw, 18px); color: var(--text-soft); }
 
         /* =========================================================
-           9. SERVICES
+           9. WHAT YOU GET
            ========================================================= */
-        .services { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
-        @media (max-width: 900px) { .services { grid-template-columns: 1fr 1fr; } }
-        @media (max-width: 620px) { .services { grid-template-columns: 1fr; } }
-        .service {
-            position: relative; background: var(--surface); border: 2.5px solid var(--border-ink);
-            border-radius: var(--radius); padding: 34px 30px; box-shadow: var(--pop-sm);
+        .cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+        @media (max-width: 900px) { .cards { grid-template-columns: 1fr 1fr; } }
+        @media (max-width: 480px) { .cards { grid-template-columns: 1fr; } }
+        .card {
+            background: var(--surface); border: 2.5px solid var(--ink); border-radius: var(--radius);
+            padding: 28px 24px; box-shadow: var(--pop-sm);
             transition: transform 0.3s var(--bounce), box-shadow 0.3s;
         }
-        .service:nth-child(even) { transform: rotate(-0.6deg); }
-        .service:nth-child(odd) { transform: rotate(0.6deg); }
-        .service:hover { transform: translate(-3px, -5px) rotate(0deg); box-shadow: var(--pop-md); }
-        .service:hover .ico { animation: jiggle 0.5s ease; }
-        .service .ico { width: 58px; height: 58px; border-radius: 18px; display: grid; place-items: center; background: var(--frost); color: var(--blueberry); margin-bottom: 22px; border: 2.5px solid var(--border-ink); }
-        .service .ico svg { width: 28px; height: 28px; }
-        @keyframes jiggle { 0%,100%{transform:rotate(0);} 25%{transform:rotate(-10deg);} 75%{transform:rotate(10deg);} }
-        .service h3 { font-family: var(--display); font-weight: 600; font-size: 23px; }
-        .service p { margin-top: 10px; color: var(--text-soft); font-size: 15.5px; }
-        .service .num { position: absolute; top: 26px; right: 30px; font-family: var(--display); font-weight: 700; font-size: 24px; color: var(--text-faint); }
+        .card:nth-child(odd) { transform: rotate(-0.8deg); }
+        .card:nth-child(even) { transform: rotate(0.8deg); }
+        .card:hover { transform: translate(-3px,-5px) rotate(0); box-shadow: var(--pop-md); }
+        .card .ico { width: 56px; height: 56px; border-radius: 16px; display: grid; place-items: center; background: var(--surface-2); color: var(--azure); border: 2.5px solid var(--ink); margin-bottom: 18px; }
+        .card .ico svg { width: 28px; height: 28px; }
+        .card h3 { font-family: var(--display); font-weight: 600; font-size: 20px; }
+        .card p { margin-top: 8px; color: var(--text-soft); font-size: 15px; }
 
         /* =========================================================
-           10. STATS
+           10. HOW IT WORKS
            ========================================================= */
-        .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+        .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+        @media (max-width: 900px) { .steps { grid-template-columns: 1fr 1fr; } }
+        @media (max-width: 480px) { .steps { grid-template-columns: 1fr; } }
+        .step { background: var(--surface); border: 2.5px solid var(--ink); border-radius: var(--radius); padding: 28px 24px; box-shadow: var(--pop-sm); transition: transform 0.3s var(--bounce); }
+        .step:hover { transform: translateY(-5px); }
+        .step .badge { width: 52px; height: 52px; border-radius: 999px; display: grid; place-items: center; background: var(--navy); color: #fff; font-family: var(--display); font-weight: 700; font-size: 22px; border: 2.5px solid var(--ink); margin-bottom: 16px; }
+        .step:nth-child(2) .badge { background: var(--azure); }
+        .step:nth-child(3) .badge { background: var(--sky); }
+        .step:nth-child(4) .badge { background: var(--lemon); color: var(--navy); }
+        .step h3 { font-family: var(--display); font-weight: 600; font-size: 20px; }
+        .step p { margin-top: 8px; color: var(--text-soft); font-size: 15px; }
+
+        /* =========================================================
+           11. PRICE
+           ========================================================= */
+        .price-card {
+            max-width: 640px; margin: 0 auto; text-align: center;
+            background: var(--navy); color: #fff;
+            border: 3px solid var(--ink); border-radius: var(--radius);
+            padding: clamp(36px, 7vw, 64px); box-shadow: var(--pop-md); position: relative;
+        }
+        .price-card .tag { font-family: var(--display); font-weight: 600; font-size: 14px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--lemon); }
+        .price-card .amount { font-family: var(--display); font-weight: 700; font-size: clamp(64px, 16vw, 130px); line-height: 0.9; letter-spacing: -0.03em; margin: 10px 0; }
+        .price-card .amount .d { color: var(--lemon); }
+        .price-card p { color: rgba(255,255,255,0.85); font-size: clamp(16px, 2.4vw, 19px); max-width: 34ch; margin: 8px auto 0; }
+        .price-card .cta { margin-top: 28px; }
+
+        /* =========================================================
+           12. STATS
+           ========================================================= */
+        .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
         @media (max-width: 900px) { .stats-grid { grid-template-columns: 1fr 1fr; } }
-        @media (max-width: 520px) { .stats-grid { grid-template-columns: 1fr; } }
-        .stat { background: var(--surface); border: 2.5px solid var(--border-ink); border-radius: var(--radius); padding: 30px 26px; box-shadow: var(--pop-sm); transition: transform 0.3s var(--bounce); }
-        .stat:hover { transform: translateY(-5px) rotate(-1deg); }
-        .stat:nth-child(1) { background: var(--frost); }
-        .stat-num { font-family: var(--display); font-weight: 700; font-size: clamp(46px, 5.5vw, 68px); line-height: 1; letter-spacing: -0.03em; color: var(--blueberry); display: flex; align-items: baseline; }
-        .stat:nth-child(2) .stat-num { color: var(--plum); }
-        .stat:nth-child(3) .stat-num { color: var(--sky); }
-        .stat:nth-child(4) .stat-num { color: var(--blueberry-d); }
+        @media (max-width: 480px) { .stats-grid { grid-template-columns: 1fr; } }
+        .stat { background: var(--surface); border: 2.5px solid var(--ink); border-radius: var(--radius); padding: 28px 22px; box-shadow: var(--pop-sm); transition: transform 0.3s var(--bounce); }
+        .stat:hover { transform: translateY(-4px) rotate(-1deg); }
+        .stat:nth-child(1) { background: var(--surface-2); }
+        .stat-num { font-family: var(--display); font-weight: 700; font-size: clamp(44px, 11vw, 62px); line-height: 1; letter-spacing: -0.03em; color: var(--navy); display: flex; align-items: baseline; }
+        :root[data-theme="dark"] .stat-num { color: var(--sky); }
+        .stat:nth-child(2) .stat-num { color: var(--azure); }
         .stat-num .pre { color: var(--text-faint); font-weight: 500; margin-right: 4px; }
-        .stat-num .unit { font-size: 0.5em; color: var(--text-faint); font-weight: 600; margin-left: 4px; }
-        .stat p { margin-top: 14px; font-size: 15px; color: var(--text); }
+        .stat-num .unit { font-size: 0.46em; color: var(--text-faint); font-weight: 600; margin-left: 4px; }
+        .stat p { margin-top: 12px; font-size: 14.5px; color: var(--text); }
         .stat .src { margin-top: 12px; font-family: var(--display); font-size: 11.5px; font-weight: 500; color: var(--text-faint); }
 
         /* =========================================================
-           11. PROCESS
+           13. TEAM (no animals)
            ========================================================= */
-        .process { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
-        @media (max-width: 820px) { .process { grid-template-columns: 1fr; } }
-        .step { position: relative; background: var(--surface); border: 2.5px solid var(--border-ink); border-radius: var(--radius); padding: 32px 28px; box-shadow: var(--pop-sm); transition: transform 0.3s var(--bounce); }
-        .step:hover { transform: translateY(-5px); }
-        .step .badge { width: 54px; height: 54px; border-radius: 999px; display: grid; place-items: center; background: var(--blueberry); color: #fff; font-family: var(--display); font-weight: 700; font-size: 22px; border: 2.5px solid var(--border-ink); margin-bottom: 18px; }
-        .step:nth-child(2) .badge { background: var(--plum); }
-        .step:nth-child(3) .badge { background: var(--sky); }
-        .step h3 { font-family: var(--display); font-weight: 600; font-size: 23px; }
-        .step p { margin-top: 8px; color: var(--text-soft); font-size: 15.5px; }
+        .team-note { text-align: center; max-width: 56ch; margin: 0 auto clamp(34px,5vw,48px); color: var(--text-soft); font-size: clamp(16px,2.4vw,18px); }
+        .team { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+        @media (max-width: 720px) { .team { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; } }
+        .member { background: var(--surface); border: 2.5px solid var(--ink); border-radius: var(--radius); padding: 28px 24px; box-shadow: var(--pop-sm); text-align: center; transition: transform 0.3s var(--bounce); }
+        .member:hover { transform: translateY(-5px); }
+        .member:hover .avatar { transform: rotate(-6deg) scale(1.05); }
+        .avatar { width: 84px; height: 84px; border-radius: 999px; margin: 0 auto 18px; display: grid; place-items: center; font-family: var(--display); font-weight: 700; font-size: 30px; color: #fff; border: 2.5px solid var(--ink); box-shadow: var(--pop-sm); transition: transform 0.35s var(--bounce); }
+        .member:nth-child(1) .avatar { background: var(--navy); }
+        .member:nth-child(2) .avatar { background: var(--azure); }
+        .member:nth-child(3) .avatar { background: var(--sky); }
+        .member .m-name { font-family: var(--display); font-weight: 600; font-size: 19px; }
+        .member .m-role { margin-top: 3px; font-family: var(--display); font-size: 12px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-faint); }
 
         /* =========================================================
-           12. FOUNDERS
+           14. CONTACT
            ========================================================= */
-        .founders { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
-        @media (max-width: 820px) { .founders { grid-template-columns: 1fr; } }
-        .founder { position: relative; background: var(--surface); border: 2.5px solid var(--border-ink); border-radius: var(--radius); padding: 32px 28px; box-shadow: var(--pop-sm); overflow: hidden; transition: transform 0.3s var(--bounce), box-shadow 0.3s; }
-        .founder:nth-child(1) { transform: rotate(-1deg); }
-        .founder:nth-child(3) { transform: rotate(1deg); }
-        .founder:hover { transform: translate(-3px, -5px) rotate(0deg); box-shadow: var(--pop-md); }
-        .founder:hover .founder-glyph { animation: bounceGlyph 0.6s var(--bounce); }
-        @keyframes bounceGlyph { 0%,100%{transform:translateY(0) rotate(0);} 40%{transform:translateY(-14px) rotate(-8deg);} }
-        .founder-top { display: flex; align-items: center; justify-content: space-between; }
-        .founder-glyph { font-size: 56px; line-height: 1; display: inline-block; }
-        .founder-idx { font-family: var(--display); font-size: 13px; font-weight: 600; letter-spacing: 0.12em; color: #fff; background: var(--blueberry); padding: 5px 12px; border-radius: 999px; border: 2.5px solid var(--border-ink); }
-        .founder:nth-child(2) .founder-idx { background: var(--plum); }
-        .founder:nth-child(3) .founder-idx { background: var(--sky); }
-        .founder-title { font-family: var(--display); font-weight: 700; font-size: clamp(34px, 3.8vw, 46px); line-height: 1; margin-top: 26px; }
-        .founder:nth-child(1) .founder-title { color: var(--blueberry); }
-        .founder:nth-child(2) .founder-title { color: var(--plum); }
-        .founder:nth-child(3) .founder-title { color: var(--sky); }
-        .founder-meta { margin-top: 22px; padding-top: 18px; border-top: 2.5px dashed var(--border); }
-        .founder-name { font-family: var(--display); font-weight: 600; font-size: 18px; }
-        .founder-role { margin-top: 2px; font-family: var(--display); font-size: 12px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-faint); }
+        .contact {
+            position: relative; overflow: hidden; text-align: center;
+            background: var(--navy); color: #fff;
+            border: 3px solid var(--ink); border-radius: clamp(24px, 4vw, 38px);
+            padding: clamp(40px, 8vw, 88px); box-shadow: var(--pop-md);
+        }
+        .contact h2 { font-family: var(--display); font-weight: 700; font-size: clamp(32px, 7vw, 64px); line-height: 1.04; letter-spacing: -0.02em; }
+        .contact h2 em { font-style: normal; color: var(--lemon); }
+        .contact p { margin: 18px auto 0; max-width: 46ch; font-size: clamp(16px,2.4vw,18px); color: rgba(255,255,255,0.86); }
+        .contact-form { margin: 32px auto 0; max-width: 520px; display: grid; gap: 10px; }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        @media (max-width: 460px) { .form-row { grid-template-columns: 1fr; } }
+        .contact-form input {
+            width: 100%; background: rgba(255,255,255,0.12); border: 2px solid rgba(255,255,255,0.5);
+            border-radius: 14px; color: #fff; padding: 15px 18px; font-size: 15px; outline: none;
+            transition: border-color 0.2s, background 0.2s;
+        }
+        .contact-form input::placeholder { color: rgba(255,255,255,0.65); }
+        .contact-form input:focus { border-color: var(--lemon); background: rgba(255,255,255,0.18); }
+        .contact-form .btn { width: 100%; background: var(--lemon); color: var(--navy); border-color: var(--ink); box-shadow: 4px 4px 0 rgba(0,0,0,0.35); }
+        .contact-form .btn:hover { transform: translate(-2px,-3px); box-shadow: 7px 7px 0 rgba(0,0,0,0.35); }
+        .contact-alt { margin-top: 18px; font-family: var(--display); font-size: 14px; color: rgba(255,255,255,0.9); }
+        .contact-alt a { color: var(--lemon); border-bottom: 2px solid rgba(255,210,77,0.5); }
 
         /* =========================================================
-           13. CTA
+           15. FOOTER
            ========================================================= */
-        .cta { position: relative; overflow: hidden; background: linear-gradient(135deg, var(--blueberry-d), var(--blueberry) 52%, var(--plum)); border: 3px solid var(--border-ink); border-radius: clamp(28px, 4vw, 44px); padding: clamp(46px, 8vw, 96px); text-align: center; color: #fff; box-shadow: var(--pop-md); }
-        .cta::before { content: ""; position: absolute; width: 460px; height: 460px; border-radius: 999px; background: radial-gradient(circle, rgba(255,255,255,0.24), transparent 65%); top: -200px; right: -120px; }
-        .cta::after { content: ""; position: absolute; width: 380px; height: 380px; border-radius: 999px; background: radial-gradient(circle, rgba(255,255,255,0.16), transparent 65%); bottom: -180px; left: -110px; }
-        .cta-inner { position: relative; z-index: 2; }
-        .cta h2 { font-family: var(--display); font-weight: 700; font-size: clamp(36px, 6vw, 70px); line-height: 1.04; letter-spacing: -0.02em; }
-        .cta h2 em { font-style: normal; color: var(--lemon); }
-        .cta p { margin: 20px auto 0; max-width: 50ch; font-size: 18px; color: rgba(255,255,255,0.9); }
-        .cta-form { margin: 36px auto 0; max-width: 500px; display: flex; gap: 8px; background: rgba(255,255,255,0.16); border: 2.5px solid rgba(255,255,255,0.9); border-radius: 999px; padding: 6px; }
-        .cta-form input { flex: 1; background: transparent; border: none; outline: none; color: #fff; padding: 14px 22px; font: inherit; font-size: 15px; }
-        .cta-form input::placeholder { color: rgba(255,255,255,0.7); }
-        .cta-form button { background: #fff; color: var(--blueberry-d); padding: 14px 26px; border-radius: 999px; font-family: var(--display); font-weight: 600; transition: transform 0.25s var(--bounce), background 0.2s; }
-        .cta-form button:hover { transform: scale(1.06) rotate(-2deg); background: var(--lemon); }
-        .cta-alt { margin-top: 18px; font-family: var(--display); font-size: 13px; color: rgba(255,255,255,0.85); }
-        .cta-alt a { border-bottom: 2px solid rgba(255,255,255,0.6); }
-
-        /* =========================================================
-           14. FOOTER
-           ========================================================= */
-        footer { padding: 70px 0 130px; }
-        .footer-top { display: flex; justify-content: space-between; gap: 40px; flex-wrap: wrap; padding-bottom: 36px; border-bottom: 2.5px dashed var(--border); }
+        footer { padding: 64px 0 130px; }
+        .footer-top { display: flex; justify-content: space-between; gap: 32px; flex-wrap: wrap; padding-bottom: 32px; border-bottom: 2.5px dashed var(--border); }
         .footer-brand { max-width: 34ch; }
-        .footer-brand .brand { margin-bottom: 14px; }
+        .footer-brand .brand { margin-bottom: 12px; }
         .footer-brand p { color: var(--text-soft); font-size: 15px; }
-        .footer-cols { display: flex; gap: 60px; flex-wrap: wrap; }
-        .footer-col h5 { font-family: var(--display); font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-faint); margin-bottom: 12px; }
+        .footer-cols { display: flex; gap: 48px; flex-wrap: wrap; }
+        .footer-col h5 { font-family: var(--display); font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-faint); margin-bottom: 12px; }
         .footer-col a { display: block; padding: 5px 0; font-size: 15px; color: var(--text-soft); transition: color 0.2s, transform 0.2s var(--bounce); }
-        .footer-col a:hover { color: var(--blueberry); transform: translateX(4px); }
-        .footer-bottom { margin-top: 28px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; font-family: var(--display); font-size: 13px; color: var(--text-faint); }
+        .footer-col a:hover { color: var(--azure); transform: translateX(4px); }
+        .footer-bottom { margin-top: 26px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; font-family: var(--display); font-size: 13px; color: var(--text-faint); }
 
         /* =========================================================
-           15. REVEAL
+           16. REVEAL
            ========================================================= */
-        .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s var(--bounce); }
+        .reveal { opacity: 0; transform: translateY(26px); transition: opacity 0.7s var(--bounce), transform 0.7s var(--bounce); }
         .reveal.visible { opacity: 1; transform: none; }
 
         /* =========================================================
-           16. WALKING BLUEBERRY CHARACTER
+           17. WALKING BLUEBERRY
            ========================================================= */
-        .berry-walker {
-            position: fixed; bottom: 8px; left: 0; z-index: 60;
-            width: 92px; height: 118px;
-            animation: stroll 26s linear infinite;
-            will-change: transform;
-        }
+        .berry-walker { position: fixed; bottom: 8px; left: 0; z-index: 60; width: 84px; height: 108px; animation: stroll 26s linear infinite; will-change: transform; }
         .berry-flip { width: 100%; height: 100%; animation: face 26s linear infinite; transform-origin: 50% 50%; }
         .berry-bob { width: 100%; height: 100%; animation: bob 0.5s ease-in-out infinite; }
-        .berry-walker .tip {
-            position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%) scale(0.6);
-            margin-bottom: 6px; white-space: nowrap;
-            font-family: var(--display); font-weight: 600; font-size: 12px;
-            background: var(--surface); color: var(--text);
-            border: 2.5px solid var(--border-ink); border-radius: 999px;
-            padding: 5px 12px; box-shadow: var(--pop-sm);
-            opacity: 0; transition: opacity 0.2s, transform 0.25s var(--bounce);
-            pointer-events: none;
-        }
+        .berry-walker .tip { position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%) scale(0.6); margin-bottom: 6px; white-space: nowrap; font-family: var(--display); font-weight: 600; font-size: 12px; background: var(--surface); color: var(--text); border: 2.5px solid var(--ink); border-radius: 999px; padding: 5px 12px; box-shadow: var(--pop-sm); opacity: 0; transition: opacity 0.2s, transform 0.25s var(--bounce); pointer-events: none; }
         .berry-walker:hover .tip { opacity: 1; transform: translateX(-50%) scale(1); }
         .berry-walker.jump { animation: stroll 26s linear infinite, hop 0.6s var(--bounce); }
 
-        @keyframes stroll {
-            0%   { transform: translateX(4px); }
-            47%  { transform: translateX(calc(100vw - 96px)); }
-            50%  { transform: translateX(calc(100vw - 96px)); }
-            97%  { transform: translateX(4px); }
-            100% { transform: translateX(4px); }
-        }
+        @keyframes stroll { 0% { transform: translateX(4px); } 47% { transform: translateX(calc(100vw - 90px)); } 50% { transform: translateX(calc(100vw - 90px)); } 97% { transform: translateX(4px); } 100% { transform: translateX(4px); } }
         @keyframes face { 0%,47% { transform: scaleX(1); } 50%,97% { transform: scaleX(-1); } 100% { transform: scaleX(1); } }
         @keyframes bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
-        @keyframes hop { 0%,100% { margin-bottom: 0; } 40% { margin-bottom: 90px; } }
+        @keyframes hop { 0%,100% { margin-bottom: 0; } 40% { margin-bottom: 80px; } }
 
         .berry-walker .leg { transform-box: fill-box; transform-origin: top center; }
         .berry-walker .leg-l { animation: stepL 0.5s ease-in-out infinite; }
@@ -420,55 +412,44 @@
         .berry-walker .eyes { transform-box: fill-box; transform-origin: center; animation: blink 4.2s infinite; }
         @keyframes blink { 0%,92%,100% { transform: scaleY(1); } 96% { transform: scaleY(0.1); } }
         .berry-walker .shadow { transform-box: fill-box; transform-origin: center; animation: squish 0.5s ease-in-out infinite; }
-        @keyframes squish { 0%,100% { transform: scaleX(1); opacity: 0.22; } 50% { transform: scaleX(0.82); opacity: 0.16; } }
-        @media (max-width: 600px) { .berry-walker { width: 72px; height: 94px; } }
+        @keyframes squish { 0%,100% { transform: scaleX(1); opacity: 0.2; } 50% { transform: scaleX(0.82); opacity: 0.14; } }
+        @media (max-width: 600px) { .berry-walker { width: 62px; height: 80px; } @keyframes stroll { 0% { transform: translateX(4px); } 47% { transform: translateX(calc(100vw - 68px)); } 50% { transform: translateX(calc(100vw - 68px)); } 97% { transform: translateX(4px); } 100% { transform: translateX(4px); } } }
 
         @media (prefers-reduced-motion: reduce) {
             .rise, .reveal { animation: none !important; opacity: 1 !important; transform: none !important; }
-            .marquee-track, .bubbles i, .berry-walker, .berry-flip, .berry-bob,
-            .leg-l, .leg-r, .arm-l, .arm-r, .eyes, .shadow, .hero-title em, .pill .loc-dot { animation: none !important; }
+            .marquee-track, .bubbles i, .hero-title em, .pill .dot,
+            .berry-walker, .berry-flip, .berry-bob, .leg-l, .leg-r, .arm-l, .arm-r, .eyes, .shadow { animation: none !important; }
             .berry-walker { display: none; }
         }
     </style>
 </head>
 <body>
-    <div class="ambient" aria-hidden="true">
-        <span class="blob b1"></span>
-        <span class="blob b2"></span>
-    </div>
     <div class="bubbles" id="bubbles" aria-hidden="true"></div>
 
     <!-- =========================== NAV =========================== -->
     <header class="nav" id="nav">
         <a href="#top" class="brand" aria-label="Blueberry Hub home">
-            <svg class="brand-mark spin" viewBox="0 0 32 32" aria-hidden="true">
-                <defs>
-                    <linearGradient id="bb" x1="0" y1="0" x2="1" y2="1">
-                        <stop offset="0" stop-color="var(--blueberry-2)"/>
-                        <stop offset="1" stop-color="var(--blueberry-d)"/>
-                    </linearGradient>
-                </defs>
-                <circle cx="16" cy="18" r="12" fill="url(#bb)" stroke="var(--border-ink)" stroke-width="2"/>
-                <circle cx="11.5" cy="14" r="2.6" fill="rgba(255,255,255,0.5)"/>
-                <path d="M16 5 l1.7 3.5 3.9 .4 -2.9 2.6 .8 3.8 -3.5 -2 -3.5 2 .8 -3.8 -2.9 -2.6 3.9 -.4 Z" fill="var(--lemon)" stroke="var(--border-ink)" stroke-width="1.4" stroke-linejoin="round"/>
+            <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true">
+                <defs><linearGradient id="bb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3E6DF0"/><stop offset="1" stop-color="#0B1A44"/></linearGradient></defs>
+                <circle cx="16" cy="17" r="12" fill="url(#bb)" stroke="var(--ink)" stroke-width="2"/>
+                <circle cx="11.5" cy="13" r="2.8" fill="rgba(255,255,255,0.45)"/>
+                <path d="M16 5 l1.6 3.3 3.6 .4 -2.7 2.4 .8 3.5 -3.3 -1.9 -3.3 1.9 .8 -3.5 -2.7 -2.4 3.6 -.4 Z" fill="#FFD24D" stroke="var(--ink)" stroke-width="1.4" stroke-linejoin="round"/>
             </svg>
             <span>Blueberry Hub</span>
             <span class="llc">LLC</span>
         </a>
-
         <nav class="nav-links">
-            <a href="#services">Services</a>
-            <a href="#results">Results</a>
-            <a href="#process">Process</a>
-            <a href="#founders">Team</a>
+            <a href="#what">What you get</a>
+            <a href="#how">How it works</a>
+            <a href="#price">Price</a>
+            <a href="#team">Team</a>
         </nav>
-
         <div class="nav-right">
             <button class="theme-toggle" id="theme-toggle" aria-label="Toggle color theme" title="Toggle theme">
                 <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
                 <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
             </button>
-            <a href="#contact" class="btn btn-primary nav-cta">Start a project</a>
+            <a href="#contact" class="btn btn-primary nav-cta">Book us</a>
         </div>
     </header>
 
@@ -476,162 +457,165 @@
 
     <!-- =========================== HERO =========================== -->
     <section class="hero wrap">
-        <span class="pill rise" style="animation-delay:0.05s"><span class="loc-dot"></span> Short-form content studio · Tucson, AZ</span>
+        <span class="pill rise" style="animation-delay:0.05s"><span class="dot"></span> Tucson, AZ · local video, made easy</span>
         <h1 class="hero-title rise" style="animation-delay:0.15s">
-            Content that makes your business <em>impossible to scroll past.</em>
+            Fun little videos that get your business <em>seen.</em>
         </h1>
         <p class="hero-sub rise" style="animation-delay:0.28s">
-            Blueberry Hub is a Tucson-based studio crafting reels, shorts, and social content
-            for local businesses ready to grow their audience and turn views into customers.
+            We're a small Tucson team. We swing by your shop, film three short videos, and send
+            them straight to your phone the same day — usually within an hour.
         </p>
         <div class="hero-cta rise" style="animation-delay:0.4s">
-            <a href="#contact" class="btn btn-primary">
-                Start a project
-                <svg class="arr" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 13L13 1M13 1H4M13 1V10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </a>
-            <a href="#services" class="btn btn-ghost">See what we do</a>
+            <a href="#contact" class="btn btn-primary">Book us <svg class="arr" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 13L13 1M13 1H4M13 1V10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            <a href="#how" class="btn btn-ghost">How it works</a>
         </div>
-        <p class="hero-note rise" style="animation-delay:0.55s">🫐 Trusted by local businesses across Southern Arizona</p>
+        <div class="hero-badge rise" style="animation-delay:0.55s">
+            <span class="price">$150–200</span>
+            <span class="divider"></span>
+            <span>3 videos · same day</span>
+        </div>
     </section>
 
     <!-- =========================== MARQUEE =========================== -->
     <div class="marquee" aria-hidden="true">
         <div class="marquee-track">
-            <span>REELS <span class="star">✦</span> SHORTS <span class="star">✦</span> TIKTOK <span class="star">✦</span> INSTAGRAM <span class="star">✦</span> YOUTUBE <span class="star">✦</span> SOCIAL STRATEGY <span class="star">✦</span> BRAND STORY <span class="star">✦</span> TUCSON, AZ <span class="star">✦</span></span>
-            <span>REELS <span class="star">✦</span> SHORTS <span class="star">✦</span> TIKTOK <span class="star">✦</span> INSTAGRAM <span class="star">✦</span> YOUTUBE <span class="star">✦</span> SOCIAL STRATEGY <span class="star">✦</span> BRAND STORY <span class="star">✦</span> TUCSON, AZ <span class="star">✦</span></span>
+            <span>REELS <span class="star">✦</span> TIKTOKS <span class="star">✦</span> SHORTS <span class="star">✦</span> SAME-DAY <span class="star">✦</span> READY TO POST <span class="star">✦</span> FILMED LOCAL <span class="star">✦</span> TUCSON, AZ <span class="star">✦</span></span>
+            <span>REELS <span class="star">✦</span> TIKTOKS <span class="star">✦</span> SHORTS <span class="star">✦</span> SAME-DAY <span class="star">✦</span> READY TO POST <span class="star">✦</span> FILMED LOCAL <span class="star">✦</span> TUCSON, AZ <span class="star">✦</span></span>
         </div>
     </div>
 
-    <!-- =========================== SERVICES =========================== -->
-    <section class="block wrap" id="services">
+    <!-- =========================== WHAT YOU GET =========================== -->
+    <section class="block wrap" id="what">
         <div class="sec-head reveal">
-            <span class="eyebrow">What we do</span>
-            <h2>Everything your feed <em>needs.</em></h2>
-            <p>From the first idea to the final export — we handle the whole content pipeline so you can keep running your business.</p>
+            <span class="eyebrow">What you get</span>
+            <h2>Three videos, <em>ready to post.</em></h2>
+            <p>Everything you need to start showing up on people's feeds — no big production, no fuss.</p>
         </div>
-        <div class="services reveal">
-            <article class="service">
+        <div class="cards reveal">
+            <article class="card">
                 <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M10 8.5v7l6-3.5-6-3.5z" fill="currentColor" stroke="none"/></svg></div>
-                <span class="num">01</span>
-                <h3>Short-Form Reels</h3>
-                <p>Scroll-stopping reels and shorts shot and edited for Instagram, TikTok, and YouTube — built to get watched all the way through.</p>
+                <h3>3 short videos</h3>
+                <p>Vertical clips made for Instagram Reels, TikTok, and YouTube Shorts.</p>
             </article>
-            <article class="service">
-                <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
-                <span class="num">02</span>
-                <h3>Social Management</h3>
-                <p>Posting, captions, hashtags, and community replies handled on a steady schedule so your accounts never go quiet.</p>
+            <article class="card">
+                <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+                <h3>Filmed at your place</h3>
+                <p>We come to your shop and capture your space, your product, your people.</p>
             </article>
-            <article class="service">
-                <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></svg></div>
-                <span class="num">03</span>
-                <h3>Content Strategy</h3>
-                <p>A clear monthly plan built around your goals — what to post, when, and why — so every video pulls its weight.</p>
-            </article>
-            <article class="service">
-                <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg></div>
-                <span class="num">04</span>
-                <h3>Editing &amp; Post</h3>
-                <p>Already have footage? We cut, caption, and polish your raw clips into a month of ready-to-post content.</p>
-            </article>
-            <article class="service">
-                <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
-                <span class="num">05</span>
-                <h3>Launch Sprints</h3>
-                <p>Opening a location or dropping something new? A focused two-week burst of content built around the moment.</p>
-            </article>
-            <article class="service">
+            <article class="card">
                 <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l2.4 7.4H22l-6 4.5 2.3 7.1-6.3-4.6L5.7 21 8 14 2 9.4h7.6z"/></svg></div>
-                <span class="num">06</span>
-                <h3>Brand Storytelling</h3>
-                <p>The owner, the origin, the regulars — we turn what makes your business special into content people remember.</p>
+                <h3>Polished &amp; ready</h3>
+                <p>Trimmed, captioned, and finished so they're good to go the moment you get them.</p>
             </article>
+            <article class="card">
+                <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg></div>
+                <h3>Sent the same day</h3>
+                <p>Your finished videos land on your phone before we leave — usually within the hour.</p>
+            </article>
+        </div>
+    </section>
+
+    <!-- =========================== HOW IT WORKS =========================== -->
+    <section class="block wrap" id="how">
+        <div class="sec-head reveal">
+            <span class="eyebrow">How it works</span>
+            <h2>Easy from <em>hello to done.</em></h2>
+            <p>Four simple steps. You keep doing your thing while we handle the rest.</p>
+        </div>
+        <div class="steps reveal">
+            <div class="step"><div class="badge">1</div><h3>We come by</h3><p>We drop in and say hi — no big crew, no complicated setup.</p></div>
+            <div class="step"><div class="badge">2</div><h3>We film</h3><p>We capture your space and what makes it special. Quick, friendly, and easy.</p></div>
+            <div class="step"><div class="badge">3</div><h3>We put it together</h3><p>We shape the footage into three fun, scroll-stopping videos on the spot.</p></div>
+            <div class="step"><div class="badge">4</div><h3>We send them over</h3><p>The finished videos go straight to your phone the same day — ready to post.</p></div>
+        </div>
+    </section>
+
+    <!-- =========================== PRICE =========================== -->
+    <section class="block wrap" id="price">
+        <div class="sec-head reveal">
+            <span class="eyebrow">The price</span>
+            <h2>Simple, and <em>all included.</em></h2>
+            <p>One clear price for the whole thing. No packages to pick through, no surprises.</p>
+        </div>
+        <div class="price-card reveal">
+            <div class="tag">Three short videos</div>
+            <div class="amount">$150<span class="d">–</span>200</div>
+            <p>That covers the visit, the filming, and your three finished videos — sent the same day.</p>
+            <a href="#contact" class="btn btn-ghost cta" style="--on-btn: var(--navy);">Let's do it</a>
         </div>
     </section>
 
     <!-- =========================== STATS =========================== -->
-    <section class="block wrap" id="results">
+    <section class="block wrap" id="why">
         <div class="sec-head reveal">
-            <span class="eyebrow">Why it works</span>
-            <h2>The numbers <em>don't lie.</em></h2>
-            <p>A few honest reasons short-form content moves the needle for local businesses — straight from the people who studied it.</p>
+            <span class="eyebrow">Why short videos</span>
+            <h2>It's how people <em>find you now.</em></h2>
+            <p>A few honest numbers on why short videos are so good at bringing in local customers.</p>
         </div>
         <div class="stats-grid reveal">
             <article class="stat">
                 <div class="stat-num"><span data-count="40">0</span><span class="unit">%</span></div>
-                <p>of Gen Z look on TikTok or Instagram first when deciding where to eat — before Google or Maps.</p>
+                <p>of Gen Z look on TikTok or Instagram first when deciding where to go — before Google or Maps.</p>
                 <div class="src">Google, 2022</div>
             </article>
             <article class="stat">
                 <div class="stat-num"><span data-count="89">0</span><span class="unit">%</span></div>
-                <p>of people say watching a video has convinced them to buy a product or service.</p>
-                <div class="src">Wyzowl · State of Video Marketing 2024</div>
+                <p>of people say watching a video helped them decide to try a product or service.</p>
+                <div class="src">Wyzowl · 2024</div>
             </article>
             <article class="stat">
                 <div class="stat-num"><span data-count="17">0</span><span class="unit">hrs</span></div>
                 <p>the average person spends watching online video — every single week.</p>
-                <div class="src">Wyzowl · State of Video Marketing 2024</div>
+                <div class="src">Wyzowl · 2024</div>
             </article>
             <article class="stat">
                 <div class="stat-num"><span class="pre">#</span><span data-count="1">0</span></div>
-                <p>format marketers say delivers the best ROI, three years running: short-form video.</p>
-                <div class="src">HubSpot · State of Marketing 2024</div>
+                <p>most-watched type of content online today: short-form video.</p>
+                <div class="src">HubSpot · 2024</div>
             </article>
         </div>
     </section>
 
-    <!-- =========================== PROCESS =========================== -->
-    <section class="block wrap" id="process">
-        <div class="sec-head reveal">
-            <span class="eyebrow">How it works</span>
-            <h2>Simple from <em>start to post.</em></h2>
-            <p>No agency runaround. Three clear steps from first hello to content going live.</p>
-        </div>
-        <div class="process reveal">
-            <div class="step"><div class="badge">1</div><h3>Discover</h3><p>A quick call to learn your business — your goals, your audience, and what makes you worth watching.</p></div>
-            <div class="step"><div class="badge">2</div><h3>Create</h3><p>We shoot, edit, and craft a batch of content. You review everything in a private gallery before it goes anywhere.</p></div>
-            <div class="step"><div class="badge">3</div><h3>Grow</h3><p>We post on a schedule, watch what lands, and double down on what works — month after month.</p></div>
-        </div>
-    </section>
-
-    <!-- =========================== FOUNDERS =========================== -->
-    <section class="block wrap" id="founders">
+    <!-- =========================== TEAM =========================== -->
+    <section class="block wrap" id="team">
         <div class="sec-head reveal">
             <span class="eyebrow">The team</span>
-            <h2>Three founders, <em>one hub.</em></h2>
-            <p>The people behind Blueberry Hub — different strengths, same obsession with great content.</p>
+            <h2>The folks <em>behind it.</em></h2>
         </div>
-        <div class="founders reveal">
-            <article class="founder">
-                <div class="founder-top"><span class="founder-idx">No. 01</span><span class="founder-glyph" aria-hidden="true">🐵</span></div>
-                <h3 class="founder-title">The Monkey</h3>
-                <div class="founder-meta"><div class="founder-name">Vincent Adam Duong</div><div class="founder-role">Co-founder</div></div>
+        <p class="team-note reveal">We're a friendly three-person team from Tucson. Between us we handle the filming, the editing, and keeping you in the loop from start to finish.</p>
+        <div class="team reveal">
+            <article class="member">
+                <div class="avatar" aria-hidden="true">VD</div>
+                <div class="m-name">Vincent Adam Duong</div>
+                <div class="m-role">Co-founder</div>
             </article>
-            <article class="founder">
-                <div class="founder-top"><span class="founder-idx">No. 02</span><span class="founder-glyph" aria-hidden="true">🦍</span></div>
-                <h3 class="founder-title">The Gorilla</h3>
-                <div class="founder-meta"><div class="founder-name">Tyler Knight</div><div class="founder-role">Co-founder</div></div>
+            <article class="member">
+                <div class="avatar" aria-hidden="true">TK</div>
+                <div class="m-name">Tyler Knight</div>
+                <div class="m-role">Co-founder</div>
             </article>
-            <article class="founder">
-                <div class="founder-top"><span class="founder-idx">No. 03</span><span class="founder-glyph" aria-hidden="true">🐯</span></div>
-                <h3 class="founder-title">The Tiger</h3>
-                <div class="founder-meta"><div class="founder-name">Mackynzie Kalleen Ward</div><div class="founder-role">Co-founder</div></div>
+            <article class="member">
+                <div class="avatar" aria-hidden="true">MW</div>
+                <div class="m-name">Mackynzie Kalleen Ward</div>
+                <div class="m-role">Co-founder</div>
             </article>
         </div>
     </section>
 
-    <!-- =========================== CTA =========================== -->
+    <!-- =========================== CONTACT =========================== -->
     <section class="block wrap" id="contact">
-        <div class="cta reveal">
-            <div class="cta-inner">
-                <h2>Let's grow your <em>audience.</em></h2>
-                <p>Drop your email and we'll get back to you with a few questions and a time to chat. No decks, no pressure.</p>
-                <form class="cta-form" onsubmit="event.preventDefault(); var b=this.querySelector('button'); b.innerText='✓ Sent!'; b.disabled=true;">
-                    <input type="email" placeholder="you@yourbusiness.com" required aria-label="Your email">
-                    <button type="submit">Get started</button>
-                </form>
-                <p class="cta-alt">or email <a href="mailto:hello@blueberryhub.co">hello@blueberryhub.co</a></p>
-            </div>
+        <div class="contact reveal">
+            <h2>Let's make <em>something.</em></h2>
+            <p>Tell us a little about your business and we'll set up a time to come by. Tap send and it'll open your email ready to go.</p>
+            <form class="contact-form" id="contact-form">
+                <div class="form-row">
+                    <input type="text" id="f-name" placeholder="Your name" autocomplete="name">
+                    <input type="text" id="f-biz" placeholder="Your business" autocomplete="organization">
+                </div>
+                <input type="text" id="f-msg" placeholder="Anything else? (optional)">
+                <button type="submit" class="btn">Send us an email</button>
+            </form>
+            <p class="contact-alt">or email us directly at <a href="mailto:hello@blueberry-hub.com">hello@blueberry-hub.com</a></p>
         </div>
     </section>
 
@@ -641,85 +625,69 @@
             <div class="footer-brand">
                 <div class="brand">
                     <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true">
-                        <circle cx="16" cy="18" r="12" fill="url(#bb)" stroke="var(--border-ink)" stroke-width="2"/>
-                        <circle cx="11.5" cy="14" r="2.6" fill="rgba(255,255,255,0.5)"/>
-                        <path d="M16 5 l1.7 3.5 3.9 .4 -2.9 2.6 .8 3.8 -3.5 -2 -3.5 2 .8 -3.8 -2.9 -2.6 3.9 -.4 Z" fill="var(--lemon)" stroke="var(--border-ink)" stroke-width="1.4" stroke-linejoin="round"/>
+                        <circle cx="16" cy="17" r="12" fill="url(#bb)" stroke="var(--ink)" stroke-width="2"/>
+                        <circle cx="11.5" cy="13" r="2.8" fill="rgba(255,255,255,0.45)"/>
+                        <path d="M16 5 l1.6 3.3 3.6 .4 -2.7 2.4 .8 3.5 -3.3 -1.9 -3.3 1.9 .8 -3.5 -2.7 -2.4 3.6 -.4 Z" fill="#FFD24D" stroke="var(--ink)" stroke-width="1.4" stroke-linejoin="round"/>
                     </svg>
                     <span>Blueberry Hub</span>
                     <span class="llc">LLC</span>
                 </div>
-                <p>A short-form content studio helping Tucson's local businesses get seen, watched, and remembered.</p>
+                <p>A small Tucson team making short, fun videos for local businesses.</p>
             </div>
             <div class="footer-cols">
                 <div class="footer-col">
-                    <h5>Studio</h5>
-                    <a href="#services">Services</a>
-                    <a href="#results">Results</a>
-                    <a href="#process">Process</a>
-                    <a href="#founders">Team</a>
+                    <h5>Explore</h5>
+                    <a href="#what">What you get</a>
+                    <a href="#how">How it works</a>
+                    <a href="#price">Price</a>
+                    <a href="#team">Team</a>
                 </div>
                 <div class="footer-col">
-                    <h5>Connect</h5>
+                    <h5>Say hi</h5>
+                    <a href="mailto:hello@blueberry-hub.com">hello@blueberry-hub.com</a>
                     <a href="#">Instagram</a>
                     <a href="#">TikTok</a>
-                    <a href="#">YouTube</a>
-                    <a href="mailto:hello@blueberryhub.co">Email us</a>
                 </div>
             </div>
         </div>
         <div class="footer-bottom">
             <span>© <span id="year">2026</span> Blueberry Hub LLC · Tucson, Arizona</span>
-            <span>Made with 🫐 in Tucson, AZ</span>
+            <span>Made in Tucson, AZ</span>
         </div>
     </footer>
 
     <!-- =========================== WALKING BLUEBERRY =========================== -->
-    <div class="berry-walker" id="berry" title="Hi! I'm Blue">
-        <span class="tip">Hi, I'm Blue! 🫐</span>
+    <div class="berry-walker" id="berry" title="Hi there!">
+        <span class="tip">Hi there! 👋</span>
         <div class="berry-flip">
             <div class="berry-bob">
-                <svg viewBox="0 0 92 118" aria-hidden="true">
+                <svg viewBox="0 0 84 108" aria-hidden="true">
                     <defs>
                         <radialGradient id="berryBody" cx="38%" cy="32%" r="72%">
-                            <stop offset="0" stop-color="var(--blueberry-2)"/>
-                            <stop offset="70%" stop-color="var(--blueberry)"/>
-                            <stop offset="100%" stop-color="var(--blueberry-d)"/>
+                            <stop offset="0" stop-color="#4C7BF0"/>
+                            <stop offset="70%" stop-color="#2447A8"/>
+                            <stop offset="100%" stop-color="#0B1A44"/>
                         </radialGradient>
                     </defs>
-
-                    <!-- ground shadow -->
-                    <ellipse class="shadow" cx="46" cy="112" rx="26" ry="5" fill="#241B4A"/>
-
-                    <!-- legs -->
-                    <rect class="leg leg-l" x="33" y="86" width="11" height="26" rx="5.5" fill="var(--blueberry-d)" stroke="#241B4A" stroke-width="2.5"/>
-                    <rect class="leg leg-r" x="48" y="86" width="11" height="26" rx="5.5" fill="var(--blueberry-d)" stroke="#241B4A" stroke-width="2.5"/>
-
-                    <!-- arms -->
-                    <rect class="arm arm-l" x="6" y="54" width="10" height="26" rx="5" fill="var(--blueberry)" stroke="#241B4A" stroke-width="2.5"/>
-                    <rect class="arm arm-r" x="76" y="54" width="10" height="26" rx="5" fill="var(--blueberry)" stroke="#241B4A" stroke-width="2.5"/>
-
-                    <!-- body -->
-                    <circle cx="46" cy="56" r="34" fill="url(#berryBody)" stroke="#241B4A" stroke-width="3"/>
-                    <!-- shine -->
-                    <ellipse cx="34" cy="44" rx="9" ry="6" fill="rgba(255,255,255,0.55)" transform="rotate(-25 34 44)"/>
-
-                    <!-- crown star -->
-                    <path d="M46 12 l3 6.4 7 .7 -5.2 4.7 1.5 6.9 -6.3 -3.6 -6.3 3.6 1.5 -6.9 -5.2 -4.7 7 -.7 Z" fill="var(--lemon)" stroke="#241B4A" stroke-width="2.4" stroke-linejoin="round"/>
-
-                    <!-- face -->
+                    <ellipse class="shadow" cx="42" cy="103" rx="24" ry="5" fill="#0B1A44"/>
+                    <rect class="leg leg-l" x="30" y="80" width="10" height="24" rx="5" fill="#0B1A44" stroke="#0B1A44" stroke-width="2.5"/>
+                    <rect class="leg leg-r" x="44" y="80" width="10" height="24" rx="5" fill="#0B1A44" stroke="#0B1A44" stroke-width="2.5"/>
+                    <rect class="arm arm-l" x="5" y="50" width="9" height="24" rx="4.5" fill="#2447A8" stroke="#0B1A44" stroke-width="2.5"/>
+                    <rect class="arm arm-r" x="70" y="50" width="9" height="24" rx="4.5" fill="#2447A8" stroke="#0B1A44" stroke-width="2.5"/>
+                    <circle cx="42" cy="52" r="31" fill="url(#berryBody)" stroke="#0B1A44" stroke-width="3"/>
+                    <ellipse cx="31" cy="41" rx="8" ry="5.5" fill="rgba(255,255,255,0.5)" transform="rotate(-25 31 41)"/>
+                    <path d="M42 11 l2.7 5.8 6.4 .6 -4.8 4.3 1.4 6.3 -5.7 -3.3 -5.7 3.3 1.4 -6.3 -4.8 -4.3 6.4 -.6 Z" fill="#FFD24D" stroke="#0B1A44" stroke-width="2.2" stroke-linejoin="round"/>
                     <g class="eyes">
-                        <circle cx="36" cy="55" r="7.5" fill="#fff" stroke="#241B4A" stroke-width="2.2"/>
-                        <circle cx="56" cy="55" r="7.5" fill="#fff" stroke="#241B4A" stroke-width="2.2"/>
-                        <circle cx="37.5" cy="56.5" r="3.4" fill="#241B4A"/>
-                        <circle cx="57.5" cy="56.5" r="3.4" fill="#241B4A"/>
-                        <circle cx="39" cy="55" r="1.1" fill="#fff"/>
-                        <circle cx="59" cy="55" r="1.1" fill="#fff"/>
+                        <circle cx="33" cy="51" r="7" fill="#fff" stroke="#0B1A44" stroke-width="2.2"/>
+                        <circle cx="51" cy="51" r="7" fill="#fff" stroke="#0B1A44" stroke-width="2.2"/>
+                        <circle cx="34.5" cy="52.5" r="3.2" fill="#0B1A44"/>
+                        <circle cx="52.5" cy="52.5" r="3.2" fill="#0B1A44"/>
+                        <circle cx="36" cy="51" r="1" fill="#fff"/>
+                        <circle cx="54" cy="51" r="1" fill="#fff"/>
                     </g>
-                    <!-- cheeks -->
-                    <ellipse cx="28" cy="66" rx="4.5" ry="3" fill="var(--pink)" opacity="0.8"/>
-                    <ellipse cx="64" cy="66" rx="4.5" ry="3" fill="var(--pink)" opacity="0.8"/>
-                    <!-- smile -->
-                    <path d="M40 68 q6 7 12 0" fill="none" stroke="#241B4A" stroke-width="2.6" stroke-linecap="round"/>
+                    <ellipse cx="26" cy="61" rx="4" ry="2.6" fill="#8FB0FF" opacity="0.85"/>
+                    <ellipse cx="58" cy="61" rx="4" ry="2.6" fill="#8FB0FF" opacity="0.85"/>
+                    <path d="M37 63 q5 6 10 0" fill="none" stroke="#0B1A44" stroke-width="2.6" stroke-linecap="round"/>
                 </svg>
             </div>
         </div>
@@ -740,28 +708,53 @@
         // Floating bubbles
         (function () {
             const box = document.getElementById('bubbles');
-            const N = 14;
+            const N = 10;
             for (let i = 0; i < N; i++) {
                 const b = document.createElement('i');
-                const size = 12 + Math.random() * 46;
+                const size = 14 + Math.random() * 44;
                 b.style.width = b.style.height = size + 'px';
                 b.style.left = Math.random() * 100 + 'vw';
-                b.style.animationDuration = (14 + Math.random() * 16) + 's';
-                b.style.animationDelay = (-Math.random() * 24) + 's';
+                b.style.animationDuration = (16 + Math.random() * 16) + 's';
+                b.style.animationDelay = (-Math.random() * 26) + 's';
                 box.appendChild(b);
             }
+        })();
+
+        // Contact form -> opens the visitor's mail app (mailto)
+        (function () {
+            const form = document.getElementById('contact-form');
+            if (!form) return;
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                const name = document.getElementById('f-name').value.trim();
+                const biz  = document.getElementById('f-biz').value.trim();
+                const msg  = document.getElementById('f-msg').value.trim();
+
+                const subject = biz ? ('Video booking — ' + biz) : 'Video booking';
+                let body = 'Hi Blueberry Hub!\n\nI\'d love to book three short videos for my business.\n\n';
+                if (name) body += 'Name: ' + name + '\n';
+                if (biz)  body += 'Business: ' + biz + '\n';
+                if (msg)  body += '\n' + msg + '\n';
+                body += '\nThanks!';
+
+                const href = 'mailto:hello@blueberry-hub.com?subject=' +
+                    encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+
+                const btn = form.querySelector('button');
+                btn.innerText = 'Opening your email…';
+                window.location.href = href;
+                setTimeout(function () { btn.innerText = 'Send us an email'; }, 2500);
+            });
         })();
 
         // Year
         document.getElementById('year').textContent = new Date().getFullYear();
 
-        // Blueberry hops when clicked
+        // Blueberry hops on click
         (function () {
             const berry = document.getElementById('berry');
             berry.addEventListener('click', () => {
-                berry.classList.remove('jump');
-                void berry.offsetWidth;
-                berry.classList.add('jump');
+                berry.classList.remove('jump'); void berry.offsetWidth; berry.classList.add('jump');
             });
             berry.addEventListener('animationend', (e) => { if (e.animationName === 'hop') berry.classList.remove('jump'); });
         })();
@@ -784,7 +777,7 @@
                     if (!e.isIntersecting) return;
                     const el = e.target, target = parseFloat(el.dataset.count);
                     if (reduce) { el.textContent = target; io.unobserve(el); return; }
-                    const start = performance.now(), dur = 1500;
+                    const start = performance.now(), dur = 1400;
                     (function step(now){
                         const p = Math.min(1, (now - start) / dur);
                         el.textContent = Math.round(target * (1 - Math.pow(1 - p, 3)));
